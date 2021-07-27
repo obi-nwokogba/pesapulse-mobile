@@ -12,7 +12,7 @@ import UniversalFooter from '../components/UniversalFooter';
 import { Text, View } from '../components/Themed';
 import styled from 'styled-components';
 
-export default function TabOneScreen() {
+export default function TabFourScreen() {
 
 
 

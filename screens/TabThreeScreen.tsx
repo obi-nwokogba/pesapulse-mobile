@@ -12,13 +12,10 @@ import UniversalFooter from '../components/UniversalFooter';
 import { Text, View } from '../components/Themed';
 import styled from 'styled-components';
 
-export default function TabOneScreen() {
-
-
+export default function TabThreeScreen() {
 
   let apiKey = "c2qq5lqad3ickc1m1gsg";
   let symbol = "AAPL";
-  var currentprice, responseobject = "";
 
   const url1 = `https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${apiKey}`;
   const url2 = `https://finnhub.io/api/v1/stock/profile2?symbol=${symbol}&token=${apiKey}`;
