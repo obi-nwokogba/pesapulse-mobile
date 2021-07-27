@@ -89,7 +89,6 @@ function TabTwoNavigator() {
   );
 }
 
-
 const TabThreeStack = createStackNavigator<TabThreeParamList>();
 
 function TabThreeNavigator() {

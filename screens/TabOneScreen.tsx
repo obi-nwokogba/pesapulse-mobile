@@ -11,6 +11,7 @@ import { SairaSB } from '../components/StyledText2';
 import UniversalFooter from '../components/UniversalFooter';
 import { Text, View } from '../components/Themed';
 import styled from 'styled-components';
+import { ScrollView } from 'react-native';
 
 export default function TabOneScreen() {
 
@@ -21,19 +22,26 @@ export default function TabOneScreen() {
   const url1 = `https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${apiKey}`;
   const url2 = `https://finnhub.io/api/v1/stock/profile2?symbol=${symbol}&token=${apiKey}`;
 
-  const DataContainer = styled.View`
+  const AssetListItem = styled.View`
 flex:0.23;
 border:2px solid #f0f0f0;
 margin:2px 0;
 border-radius:10px;
 box-shadow:0 0 10px #eaeaea;
 background-color:#fff;
-width:90%;
+width:98%;
 padding:18px;
 padding-top:5px;
 padding-bottom:7px;
-height:20px;
+height:90px;
 line-height:10px;`;
+
+  const HomeListContainer = styled.View`
+display: flex;
+flex-direction: row;
+justify-content: space-evenly;
+align-items: stretch;
+`;
 
   const [stock, setStock] = useState(null);
 
@@ -53,28 +61,145 @@ line-height:10px;`;
     let todayshighprice = stock.h;
 
     return (
-      <View style={styles.container}>
+      <HomeListContainer>
 
-        <Text style={styles.symbol}>{symbol}</Text>
-        <Text style={styles.title}>Symbol</Text>
+        <ScrollView style={styles.listscrollview}>
+          <Text style={styles.scrolllistheader}>cryptos</Text>
 
-        <DataContainer>
-          <Text style={styles.dataheader}>today's high price</Text>
-          <SairaSB style={styles.priceNumber}>{todayshighprice}</SairaSB>
-        </DataContainer>
+          <AssetListItem>
+            <Text style={styles.dataheader}>BTC</Text>
+            <SairaSB style={styles.listingBigName}>Bitcoin</SairaSB>
+          </AssetListItem>
 
-        <DataContainer>
-          <Text style={styles.dataheader}>current price</Text>
-          <Text style={styles.priceNumber}>{currentprice}</Text>
-        </DataContainer>
+          <AssetListItem >
+            <Text style={styles.dataheader}>BCH</Text>
+            <SairaSB style={styles.listingBigName}>Bitcoin Cash</SairaSB>
+          </AssetListItem>
 
-        <DataContainer>
-          <Text style={styles.dataheader}>opening price</Text>
-          <SairaSB style={styles.priceNumber}>{openingprice}</SairaSB>
-        </DataContainer>
+          <AssetListItem>
+            <Text style={styles.dataheader}>ADA</Text>
+            <Text style={styles.listingBigName}>Cardano</Text>
+          </AssetListItem>
 
-        <UniversalFooter />
-      </View>
+          <AssetListItem>
+            <Text style={styles.dataheader}>DASH</Text>
+            <Text style={styles.listingBigName}>Dash</Text>
+          </AssetListItem>
+
+          <AssetListItem>
+            <Text style={styles.dataheader}>DOGE</Text>
+            <Text style={styles.listingBigName}>Dogecoin</Text>
+          </AssetListItem>
+
+          <AssetListItem>
+            <Text style={styles.dataheader}>EOS</Text>
+            <Text style={styles.listingBigName}>EOS</Text>
+          </AssetListItem>
+
+          <AssetListItem>
+            <Text style={styles.dataheader}>ETH</Text>
+            <Text style={styles.listingBigName}>Ethereum</Text>
+          </AssetListItem>
+
+          <AssetListItem>
+            <Text style={styles.dataheader}>GNT</Text>
+            <Text style={styles.listingBigName}>Golem</Text>
+          </AssetListItem>
+
+          <AssetListItem>
+            <Text style={styles.dataheader}>IOTA</Text>
+            <Text style={styles.listingBigName}>IOTA</Text>
+          </AssetListItem>
+
+          <AssetListItem>
+            <Text style={styles.dataheader}>LTC</Text>
+            <Text style={styles.listingBigName}>Litecoin</Text>
+          </AssetListItem>
+
+          <AssetListItem>
+            <Text style={styles.dataheader}>XMR</Text>
+            <Text style={styles.listingBigName}>Monero</Text>
+          </AssetListItem>
+
+          <AssetListItem>
+            <Text style={styles.dataheader}>NEO</Text>
+            <Text style={styles.listingBigName}>Neo</Text>
+          </AssetListItem>
+
+          <AssetListItem>
+            <Text style={styles.dataheader}>OMG</Text>
+            <Text style={styles.listingBigName}>OMG Network</Text>
+          </AssetListItem>
+
+          <AssetListItem>
+            <Text style={styles.dataheader}>DOT</Text>
+            <Text style={styles.listingBigName}>Polkadot</Text>
+          </AssetListItem>
+
+          <AssetListItem>
+            <Text style={styles.dataheader}>XRP</Text>
+            <Text style={styles.listingBigName}>Ripple</Text>
+          </AssetListItem>
+
+          <AssetListItem>
+            <Text style={styles.dataheader}>XLM</Text>
+            <Text style={styles.listingBigName}>Stellar</Text>
+          </AssetListItem>
+
+          <AssetListItem>
+            <Text style={styles.dataheader}>USDT</Text>
+            <Text style={styles.listingBigName}>Tether</Text>
+          </AssetListItem>
+
+          <AssetListItem>
+            <Text style={styles.dataheader}>TRON</Text>
+            <Text style={styles.listingBigName}>TRON</Text>
+          </AssetListItem>
+
+          <AssetListItem>
+            <Text style={styles.dataheader}>USDC</Text>
+            <Text style={styles.listingBigName}>USD Coin</Text>
+          </AssetListItem>
+
+          <AssetListItem>
+            <Text style={styles.dataheader}>ZEC</Text>
+            <SairaSB style={styles.priceNumber}>Zcash</SairaSB>
+          </AssetListItem>
+
+        </ScrollView>
+        <ScrollView style={styles.listscrollview}>
+
+          <Text style={styles.scrolllistheader}>stocks</Text>
+
+          <AssetListItem>
+            <Text style={styles.dataheader}>opening price</Text>
+            <SairaSB style={styles.priceNumber}>{openingprice}</SairaSB>
+          </AssetListItem>
+
+          <AssetListItem>
+            <Text style={styles.dataheader}>today's high price</Text>
+            <SairaSB style={styles.priceNumber}>{todayshighprice}</SairaSB>
+          </AssetListItem>
+
+          <AssetListItem>
+            <Text style={styles.dataheader}>current price</Text>
+            <Text style={styles.priceNumber}>{currentprice}</Text>
+          </AssetListItem>
+
+          <AssetListItem>
+            <Text style={styles.dataheader}>today's high price</Text>
+            <SairaSB style={styles.priceNumber}>{todayshighprice}</SairaSB>
+          </AssetListItem>
+
+          <AssetListItem>
+            <Text style={styles.dataheader}>current price</Text>
+            <Text style={styles.priceNumber}>{currentprice}</Text>
+          </AssetListItem>
+
+          <UniversalFooter />
+        </ScrollView>
+
+      </HomeListContainer>
     );
   } // end of return function
 

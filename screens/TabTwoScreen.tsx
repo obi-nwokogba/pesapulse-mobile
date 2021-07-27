@@ -53,8 +53,17 @@ function numberWithCommas(x) {
     let marketcap = "$" + marketcapnumber;
 
     let currentprice = "$" + crypto[symbol].usd;
-    let twentyfourhourchange = crypto[symbol].usd_24h_change;
+    let twentyfourhourchange = Math.round(crypto[symbol].usd_24h_change * 1000) / 1000 + "%";
+
     let twentyfourhourvolume = numberWithCommas(parseInt(crypto[symbol].usd_24h_vol));
+
+    let twentyfourhourcoloredchange = "";
+    if (twentyfourhourchange >=0){
+      twentyfourhourcoloredchange = '<SairaSB style={styles.priceNumber, styles.greenPriceNumber}>{currentprice}</SairaSB>';
+    }
+    else{
+      twentyfourhourcoloredchange = '<SairaSB style={styles.redPriceNumber, styles.redPriceNumber}>{currentprice}</SairaSB>';
+    }
 
     return (
       <View style={styles.container}>
@@ -68,7 +77,7 @@ function numberWithCommas(x) {
         </DataContainer>
         
         <DataContainer>
-        <Text style={styles.dataheader}>24hr change %</Text>
+        <Text style={styles.dataheader}>24hr change</Text>
         <Text style={styles.priceNumber}>{twentyfourhourchange}</Text>
         </DataContainer>
 
