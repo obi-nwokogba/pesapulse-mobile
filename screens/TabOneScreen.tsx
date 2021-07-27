@@ -14,8 +14,6 @@ import styled from 'styled-components';
 
 export default function TabOneScreen() {
 
-
-
   let apiKey = "c2qq5lqad3ickc1m1gsg";
   let symbol = "AAPL";
   var currentprice, responseobject = "";

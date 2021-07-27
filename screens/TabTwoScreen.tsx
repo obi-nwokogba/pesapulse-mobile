@@ -14,14 +14,7 @@ import styled from 'styled-components';
 
 export default function TabTwoScreen() {
 
-
-
-  let apiKey = "c2qq5lqad3ickc1m1gsg";
-  let symbol = "GOOG";
-  var currentprice, responseobject = "";
-
-  const url1 = `https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${apiKey}`;
-  const url2 = `https://finnhub.io/api/v1/stock/profile2?symbol=${symbol}&token=${apiKey}`;
+  let symbol = "bitcoin";
 
   const DataContainer=styled.View`
 flex:0.23;
@@ -37,22 +30,31 @@ padding-bottom:7px;
 height:20px;
 line-height:10px;`;
 
-  const [stock, setStock] = useState(null);
+// Additional function for formatting numbers
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
-  const getStock = async () => {
-    const response = await fetch(`https://finnhub.io/api/v1/quote?symbol=${symbol}&token=c3d04bqad3i868don970`);
+  const [crypto, setCrypto] = useState(null);
+
+  const getCrypto = async () => {
+    const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=USD&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true`);
     const data = await response.json();
-    setStock(data);
+    setCrypto(data);
   }
 
   useEffect(() => {
-    getStock();
+    getCrypto();
   }, []);
 
   const loaded = () => {
-    let openingprice = stock.o;
-    let currentprice = stock.c;
-    let todayshighprice = stock.h;
+    let marketcapnumber = numberWithCommas(parseInt(crypto[symbol].usd_market_cap));
+    //marketcapnumber = marketcapnumber.toLocaleString(undefined, {maximumFractionDigits:2});
+    let marketcap = "$" + marketcapnumber;
+
+    let currentprice = "$" + crypto[symbol].usd;
+    let twentyfourhourchange = crypto[symbol].usd_24h_change;
+    let twentyfourhourvolume = numberWithCommas(parseInt(crypto[symbol].usd_24h_vol));
 
     return (
       <View style={styles.container}>
@@ -61,21 +63,25 @@ line-height:10px;`;
         <Text style={styles.title}>Symbol</Text>
 
         <DataContainer>
-        <Text style={styles.dataheader}>today's high price</Text>
-          <SairaSB style={styles.priceNumber}>{todayshighprice}</SairaSB>
+        <Text style={styles.dataheader}>current price (USD)</Text>
+          <SairaSB style={styles.priceNumber}>{currentprice}</SairaSB>
         </DataContainer>
         
         <DataContainer>
-        <Text style={styles.dataheader}>current price</Text>
-        <Text style={styles.priceNumber}>{currentprice}</Text>
+        <Text style={styles.dataheader}>24hr change %</Text>
+        <Text style={styles.priceNumber}>{twentyfourhourchange}</Text>
         </DataContainer>
 
         <DataContainer>
-        <Text style={styles.dataheader}>opening price</Text>
-        <SairaSB style={styles.priceNumber}>{openingprice}</SairaSB>
+        <Text style={styles.dataheader}>24hr Volume</Text>
+        <Text style={styles.priceNumber}>{twentyfourhourvolume}</Text>
+        </DataContainer>
+
+        <DataContainer>
+        <Text style={styles.dataheader}>market cap</Text>
+        <SairaSB style={styles.priceNumber}>{marketcap}</SairaSB>
        </DataContainer>
 
-        <Text>PesaPulse Version 1.7.27.0120</Text>
         <UniversalFooter />
       </View>
     );
@@ -85,5 +91,5 @@ line-height:10px;`;
     return <Text>Loading...</Text>;
   }
 
-  return stock ? loaded() : loading();
+  return crypto ? loaded() : loading();
 }

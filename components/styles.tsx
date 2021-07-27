@@ -15,7 +15,7 @@ export default StyleSheet.create({
     priceNumber:
     {
         color: '#1872F0',
-        fontSize: 40,
+        fontSize: 45,
         fontFamily: 'sairaextracondensedsemibold'
     }, dataheader: {
         fontSize: 16,
@@ -34,7 +34,10 @@ export default StyleSheet.create({
   footerText: {
         borderRadius: 3,
         paddingHorizontal: 4,
-        fontFamily: 'space-mono'
+        fontFamily: 'space-mono',
+        backgroundColor:"#f0f0f0",
+        fontSize:13,
+        color:"#b7b7b7"
     },
     title: {
         fontSize: 20,

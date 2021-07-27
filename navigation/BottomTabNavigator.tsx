@@ -4,6 +4,9 @@
  */
 
 import { Ionicons } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { SimpleLineIcons } from '@expo/vector-icons';
+import { Foundation } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
@@ -18,40 +21,34 @@ import { BottomTabParamList, TabOneParamList, TabTwoParamList, TabThreeParamList
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
 export default function BottomTabNavigator() {
-  const colorScheme = useColorScheme();
+const colorScheme = useColorScheme();
 
   return (
     <BottomTab.Navigator
       initialRouteName="TabOne"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
 
-
- <BottomTab.Screen
+      <BottomTab.Screen
         name="Home"
         component={TabOneNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <Foundation name="list" size={24} color={color} />,
         }}
       />
-
       <BottomTab.Screen
-        name="Cryptos"
+        name="CryptoCurrencies"
         component={TabTwoNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <FontAwesome5 name="coins" size={24} color={color} />,
         }}
       />
-
-<BottomTab.Screen
+      <BottomTab.Screen
         name="Stocks"
         component={TabThreeNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <SimpleLineIcons name="graph" size={24} color={color} />,
         }}
       />
-
-
-
     </BottomTab.Navigator>
   );
 }
@@ -72,7 +69,7 @@ function TabOneNavigator() {
       <TabOneStack.Screen
         name="TabOneScreen"
         component={TabOneScreen}
-        options={{ headerTitle: 'CryptoCurrencies' }}
+        options={{ headerTitle: 'Home' }}
       />
     </TabOneStack.Navigator>
   );
@@ -86,7 +83,7 @@ function TabTwoNavigator() {
       <TabTwoStack.Screen
         name="TabTwoScreen"
         component={TabTwoScreen}
-        options={{ headerTitle: 'Stocks' }}
+        options={{ headerTitle: 'CryptoCurrencies' }}
       />
     </TabTwoStack.Navigator>
   );
