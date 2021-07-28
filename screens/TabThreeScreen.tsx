@@ -17,6 +17,7 @@ export default function TabThreeScreen() {
 
   let apiKey = "c2qq5lqad3ickc1m1gsg";
   let symbol = global.currentstock;
+  //symbol = "GOOG";
 
   const url1 = `https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${apiKey}`;
   const url2 = `https://finnhub.io/api/v1/stock/profile2?symbol=${symbol}&token=${apiKey}`;
@@ -36,11 +37,15 @@ height:20px;
 line-height:10px;`;
 
   const [stock, setStock] = useState(null);
+  const [companyData, setCompanyData] = useState(null);
 
   const getStock = async () => {
-    const response = await fetch(`https://finnhub.io/api/v1/quote?symbol=${global.currentstock}&token=c3d04bqad3i868don970`);
-    const data = await response.json();
+    const response = await fetch(`https://finnhub.io/api/v1/quote?symbol=${symbol}&token=c3d04bqad3i868don970`);
+    const response2 = await fetch(`https://finnhub.io/api/v1/stock/profile2?symbol=AAPL&token=c3d04bqad3i868don970`);
     setStock(data);
+    setCompanyData(data2);
+    const data = await response.json();
+    const data2 = await response.json();
   }
 
   useEffect(() => {
@@ -52,26 +57,25 @@ line-height:10px;`;
     let currentprice = stock.c;
     let todayshighprice = stock.h;
 
+    let companyName = companyData.finnhubIndustry;
+
     return (
       <View style={styles.container}>
-        <Text style={styles.symbolheader}>{symbol}</Text>
+         <Text style={styles.symbolheader}>{companyName} <small>{symbol}</small></Text>
+        <Text style={styles.symbolheader}></Text>
         {/* <Text style={styles.title}>Symbol</Text> */}
-
         <DataContainer>
           <Text style={styles.dataheader}>current price</Text>
           <Text style={styles.priceNumber}>{currentprice}</Text>
         </DataContainer>
-
         <DataContainer>
           <Text style={styles.dataheader}>today's high price</Text>
           <SairaSB style={styles.priceNumber}>{todayshighprice}</SairaSB>
         </DataContainer>
-
         <DataContainer>
           <Text style={styles.dataheader}>opening price</Text>
           <SairaSB style={styles.priceNumber}>{openingprice}</SairaSB>
         </DataContainer>
-
         <UniversalFooter />
       </View>
     );

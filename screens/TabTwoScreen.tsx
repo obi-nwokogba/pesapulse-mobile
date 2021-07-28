@@ -20,6 +20,7 @@ export default function TabTwoScreen() {
 
   let symbol = global.currentcrypto;
   let coinname = global.currentcrypto;
+  let lastloadedcrypto = "";
 
   const DataContainer = styled.View`
 flex:0.23;
@@ -41,50 +42,39 @@ line-height:10px;`;
   }
 
   const [crypto, setCrypto] = useState(null);
-  const [cryptoData, setCryptoData] = useState(null);
 
   const getCrypto = async () => {
-
-    const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${global.currentcrypto}&vs_currencies=USD&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true`);
+    const response = await fetch(`https://api.coingecko.com/api/v3/coins/${global.currentcrypto}`);
     const data = await response.json();
-
-    const response2 = await fetch(`https://api.coingecko.com/api/v3/coins/${global.currentcrypto}`);
-    const data2 = await response2.json();
-
     setCrypto(data);
-    setCryptoData(data2);
   }
 
-  
   useEffect(() => {
     getCrypto();
   }, []);
 
+  if(lastloadedcrypto != global.currentcrypto){
+    //getCrypto();
+  }
+  
   const loaded = () => {
-    // alert(navigation.coinname);
-    let marketcapnumber = numberWithCommas(parseInt(crypto[symbol].usd_market_cap));
-    //marketcapnumber = marketcapnumber.toLocaleString(undefined, {maximumFractionDigits:2});
+    let marketcapnumber = numberWithCommas(parseInt(crypto['market_data']['market_cap']['usd']));
     let marketcap = "$" + marketcapnumber;
+    let currentprice = "$" + numberWithCommas(crypto['market_data']['current_price']['usd']);
+    let twentyfourhourchange = crypto['market_data']['price_change_24h'] + "%";
+    let marketcaprank = crypto['market_cap_rank'];
+    let twentyfourhourvolume = 233;
 
-    let currentprice = "$" + crypto[symbol].usd;
-    let twentyfourhourchange = Math.round(crypto[symbol].usd_24h_change * 1000) / 1000 + "%";
+    let formalname =  crypto['name'];
+    let coinsymbol =  crypto['symbol'];
 
-    let twentyfourhourvolume = numberWithCommas(parseInt(crypto[symbol].usd_24h_vol));
-
-    let twentyfourhourcoloredchange = "";
-
-    if (twentyfourhourchange >= 0) {
-      twentyfourhourcoloredchange = '<SairaSB style={styles.priceNumber, styles.greenPriceNumber}>{currentprice}</SairaSB>';
-    }
-    else {
-      twentyfourhourcoloredchange = '<SairaSB style={styles.redPriceNumber, styles.redPriceNumber}>{currentprice}</SairaSB>';
-    }
+    lastloadedcrypto = global.currentcrypto;
 
     return (
 
       <View style={styles.container}>
-        <Text style={styles.symbolheader}>{symbol}</Text>
-        {/* <Text style={styles.title}>coinname: {coinname}</Text> */}
+        <Text style={styles.symbolheader}>{formalname}</Text>
+        <Text style={styles.coinsubdetails}>{marketcaprank} &middot; {coinsymbol}</Text>
 
         <DataContainer>
           <Text style={styles.dataheader}>current price (USD)</Text>
@@ -108,7 +98,7 @@ line-height:10px;`;
 
         <DataContainer>
           <Text style={styles.dataheader}>Market Cap Rank</Text>
-          <SairaSB style={styles.priceNumber}></SairaSB>
+          <SairaSB style={styles.priceNumber}>{marketcaprank}</SairaSB>
         </DataContainer>
 
         <UniversalFooter />
@@ -119,6 +109,7 @@ line-height:10px;`;
   } // end of return function
 
   const loading = () => {
+    getCrypto();
     return <Text>Loading...</Text> ;
   }
 

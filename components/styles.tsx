@@ -5,16 +5,32 @@ export default StyleSheet.create({
         color: '#9f9f9f',
         fontSize: 16,
         fontWeight: "200",
-        textTransform:"uppercase",
-        letterSpacing:10,
-        paddingLeft:16,
-        paddingTop:17,
-        paddingBottom:10
+        textTransform: "uppercase",
+        letterSpacing: 10,
+        paddingLeft: 16,
+        paddingTop: 17,
+        paddingBottom: 10
     },
+    coinsubdetails: {
+        color: '#7b7b7b',
+        fontSize: 16,
+        fontWeight: "200",
+        textTransform: "uppercase",
+        letterSpacing: 3,
+        padding: 8,
+        borderTopWidth:2,
+        borderTopColor:'#d8d8d8',
+        paddingBottom: 10
+    },
+    image: {
+        flex: 1,
+        justifyContent: "center"
+      },
     assetlistitem:
-        {flex: 0.2, 
+    {
+        flex: 0.2,
         borderWidth: 2,
-        borderColor: '#F0F0F0' ,
+        borderColor: '#F0F0F0',
         margin: 2,
         borderRadius: 10,
         backgroundColor: '#ffffff',
@@ -23,46 +39,46 @@ export default StyleSheet.create({
         paddingBottom: 8,
         lineHeight: 30
     },
-    listscrollview:{
-        paddingTop:10,
-        paddingBottom:300,
-        lineHeight:150,
-        flex:1,
-        display:'flex',
+    listscrollview: {
+        paddingTop: 10,
+        paddingBottom: 300,
+        lineHeight: 150,
+        flex: 1,
+        display: 'flex',
     },
     homelistcontainer: {
-        display:'flex',
+        display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'left',
         backgroundColor: "#f0f0f0",
-        flexDirection:'column'
+        flexDirection: 'column'
     },
     container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent:'flex-start',
+        justifyContent: 'flex-start',
         textAlign: 'left',
         backgroundColor: "#f0f0f0"
-    }, symbol: {
+    },
+    symbol: {
         color: '#68C2FF',
         fontSize: 50,
         fontWeight: "700"
     },
     symbolheader: {
-        color: '#8d8d8d',
+        color: '#7e7e7e',
         fontSize: 40,
         fontWeight: "700",
-        paddingTop:60
+        paddingTop: 50
     },
     listingBigName:
     {
         color: '#1872F0',
         fontSize: 32,
         fontFamily: 'sairaextracondensedsemibold',
-        lineHeight:50
+        lineHeight: 50
     },
-
     priceNumber:
     {
         color: '#1872F0',

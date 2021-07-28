@@ -15,7 +15,7 @@ export default function useCachedResources() {
         // Load fonts
         await Font.loadAsync({
           ...Ionicons.font,
-          'space-mono': require('../assets/fonts/mononoki-Regular.ttf'),
+          'space-mono': require('../assets/fonts/MplusCodeLatin50-Regular.ttf'),
           'sairaextracondensedsemibold': require('../assets/fonts/SairaExtraCondensed-SemiBold.ttf'),
         });
       } catch (e) {
