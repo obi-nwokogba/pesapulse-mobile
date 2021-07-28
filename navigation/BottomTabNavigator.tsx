@@ -23,6 +23,7 @@ const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 export default function BottomTabNavigator() {
 const colorScheme = useColorScheme();
 
+
   return (
     <BottomTab.Navigator
       initialRouteName="TabOne"
@@ -38,7 +39,8 @@ const colorScheme = useColorScheme();
       <BottomTab.Screen
         name="CryptoCurrencies"
         component={TabTwoNavigator}
-        options={{
+        options={
+          {
           tabBarIcon: ({ color }) => <FontAwesome5 name="coins" size={24} color={color} />,
         }}
       />
@@ -69,7 +71,7 @@ function TabOneNavigator() {
       <TabOneStack.Screen
         name="TabOneScreen"
         component={TabOneScreen}
-        options={{ headerTitle: 'Home' }}
+        options={{ headerTitle: 'PesaPulse' }}
       />
     </TabOneStack.Navigator>
   );
@@ -83,7 +85,7 @@ function TabTwoNavigator() {
       <TabTwoStack.Screen
         name="TabTwoScreen"
         component={TabTwoScreen}
-        options={{ headerTitle: 'CryptoCurrencies' }}
+        options={{ headerTitle: 'CryptoCurrencies', headerShown: false }}
       />
     </TabTwoStack.Navigator>
   );
@@ -97,7 +99,7 @@ function TabThreeNavigator() {
       <TabThreeStack.Screen
         name="TabThreeScreen"
         component={TabThreeScreen}
-        options={{ headerTitle: 'Stocks' }}
+        options={{ headerTitle: 'Stocks', headerShown: false }}
       />
     </TabThreeStack.Navigator>
   );

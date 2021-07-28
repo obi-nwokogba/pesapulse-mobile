@@ -2,9 +2,26 @@ import { StyleSheet } from "react-native"
 
 export default StyleSheet.create({
     scrolllistheader: {
-        color: '#dedede',
-        fontSize: 30,
-        fontWeight: "200"
+        color: '#9f9f9f',
+        fontSize: 16,
+        fontWeight: "200",
+        textTransform:"uppercase",
+        letterSpacing:10,
+        paddingLeft:16,
+        paddingTop:17,
+        paddingBottom:10
+    },
+    assetlistitem:
+        {flex: 0.2, 
+        borderWidth: 2,
+        borderColor: '#F0F0F0' ,
+        margin: 2,
+        borderRadius: 10,
+        backgroundColor: '#ffffff',
+        padding: 10,
+        paddingTop: 5,
+        paddingBottom: 8,
+        lineHeight: 30
     },
     listscrollview:{
         paddingTop:10,
@@ -24,7 +41,7 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent:'flex-start',
         textAlign: 'left',
         backgroundColor: "#f0f0f0"
     }, symbol: {
@@ -32,11 +49,18 @@ export default StyleSheet.create({
         fontSize: 50,
         fontWeight: "700"
     },
+    symbolheader: {
+        color: '#8d8d8d',
+        fontSize: 40,
+        fontWeight: "700",
+        paddingTop:60
+    },
     listingBigName:
     {
         color: '#1872F0',
-        fontSize: 37,
-        fontFamily: 'sairaextracondensedsemibold'
+        fontSize: 32,
+        fontFamily: 'sairaextracondensedsemibold',
+        lineHeight:50
     },
 
     priceNumber:
