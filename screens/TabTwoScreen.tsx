@@ -53,20 +53,28 @@ line-height:10px;`;
     getCrypto();
   }, []);
 
-  if(lastloadedcrypto != global.currentcrypto){
-    //getCrypto();
+  if (lastloadedcrypto != global.currentcrypto) {
+    getCrypto();
+    //setInterval(function () {
+     // getCrypto();
+    //}, 3000);
   }
-  
+
   const loaded = () => {
     let marketcapnumber = numberWithCommas(parseInt(crypto['market_data']['market_cap']['usd']));
+
     let marketcap = "$" + marketcapnumber;
+
     let currentprice = "$" + numberWithCommas(crypto['market_data']['current_price']['usd']);
+
     let twentyfourhourchange = crypto['market_data']['price_change_24h'] + "%";
+
     let marketcaprank = crypto['market_cap_rank'];
+
     let twentyfourhourvolume = 233;
 
-    let formalname =  crypto['name'];
-    let coinsymbol =  crypto['symbol'];
+    let formalname = crypto['name'];
+    let coinsymbol = crypto['symbol'];
 
     lastloadedcrypto = global.currentcrypto;
 
@@ -110,7 +118,7 @@ line-height:10px;`;
 
   const loading = () => {
     getCrypto();
-    return <Text>Loading...</Text> ;
+    return <Text>Loading...</Text>;
   }
 
   return crypto ? loaded() : loading();

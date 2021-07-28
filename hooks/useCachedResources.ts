@@ -15,8 +15,10 @@ export default function useCachedResources() {
         // Load fonts
         await Font.loadAsync({
           ...Ionicons.font,
-          'space-mono': require('../assets/fonts/MplusCodeLatin50-Regular.ttf'),
+          'mono': require('../assets/fonts/MplusCodeLatin50-Regular.ttf'),
           'sairaextracondensedsemibold': require('../assets/fonts/SairaExtraCondensed-SemiBold.ttf'),
+          'mplus1bold': require('../assets/fonts/Mplus1-Bold.ttf'),
+          'mplus1regular': require('../assets/fonts/Mplus1-Regular.ttf'),
         });
       } catch (e) {
         // We might want to provide this error information to an error reporting service

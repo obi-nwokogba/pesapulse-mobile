@@ -12,12 +12,11 @@ import UniversalFooter from '../components/UniversalFooter';
 import { Text, View } from '../components/Themed';
 import styled from 'styled-components';
 
-
 export default function TabThreeScreen() {
 
   let apiKey = "c2qq5lqad3ickc1m1gsg";
   let symbol = global.currentstock;
-  //symbol = "GOOG";
+  let lastloadedstock = "";
 
   const url1 = `https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${apiKey}`;
   const url2 = `https://finnhub.io/api/v1/stock/profile2?symbol=${symbol}&token=${apiKey}`;
@@ -41,27 +40,33 @@ line-height:10px;`;
 
   const getStock = async () => {
     const response = await fetch(`https://finnhub.io/api/v1/quote?symbol=${symbol}&token=c3d04bqad3i868don970`);
-    const response2 = await fetch(`https://finnhub.io/api/v1/stock/profile2?symbol=AAPL&token=c3d04bqad3i868don970`);
+    /*
+    const response2 = await fetch(`https://finnhub.io/api/v1/stock/profile2?symbol=AAPL&token=c3d04bqad3i868don970`); */
+
     setStock(data);
-    setCompanyData(data2);
+    //setCompanyData(data2);
     const data = await response.json();
-    const data2 = await response.json();
+    //const data2 = await response.json();
   }
 
   useEffect(() => {
     getStock();
   }, []);
 
+  if (lastloadedstock != global.currentstock) {
+    getStock();
+  }
+
   const loaded = () => {
+
     let openingprice = stock.o;
     let currentprice = stock.c;
     let todayshighprice = stock.h;
-
     let companyName = companyData.finnhubIndustry;
 
     return (
       <View style={styles.container}>
-         <Text style={styles.symbolheader}>{companyName} <small>{symbol}</small></Text>
+         <Text style={styles.symbolheader}> <small>{symbol}</small></Text>
         <Text style={styles.symbolheader}></Text>
         {/* <Text style={styles.title}>Symbol</Text> */}
         <DataContainer>

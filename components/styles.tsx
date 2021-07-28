@@ -9,7 +9,8 @@ export default StyleSheet.create({
         letterSpacing: 10,
         paddingLeft: 16,
         paddingTop: 17,
-        paddingBottom: 10
+        paddingBottom: 10,
+        fontFamily:'mplus1regular'
     },
     coinsubdetails: {
         color: '#7b7b7b',
@@ -20,7 +21,8 @@ export default StyleSheet.create({
         padding: 8,
         borderTopWidth:2,
         borderTopColor:'#d8d8d8',
-        paddingBottom: 10
+        paddingBottom: 10,
+        fontFamily:'mplus1regular'
     },
     image: {
         flex: 1,
@@ -70,7 +72,8 @@ export default StyleSheet.create({
         color: '#7e7e7e',
         fontSize: 40,
         fontWeight: "700",
-        paddingTop: 50
+        paddingTop: 50,
+        fontFamily:'mplus1bold'
     },
     listingBigName:
     {
@@ -113,7 +116,7 @@ export default StyleSheet.create({
     footerText: {
         borderRadius: 3,
         paddingHorizontal: 4,
-        fontFamily: 'space-mono',
+        fontFamily: 'mono',
         backgroundColor: "#f0f0f0",
         fontSize: 13,
         color: "#b7b7b7"
