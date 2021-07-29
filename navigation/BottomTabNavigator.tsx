@@ -16,7 +16,8 @@ import useColorScheme from '../hooks/useColorScheme';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import TabThreeScreen from '../screens/TabThreeScreen';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList, TabThreeParamList } from '../types';
+import TabFourScreen from '../screens/TabFourScreen';
+import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -36,6 +37,16 @@ const colorScheme = useColorScheme();
           tabBarIcon: ({ color }) => <Foundation name="list" size={24} color={color} />,
         }}
       />
+
+<BottomTab.Screen
+        name="Crypto Trends"
+        component={TabFourNavigator}
+        options={
+          {
+          tabBarIcon: ({ color }) => <FontAwesome5 name="coins" size={24} color={color} />,
+        }}
+      />
+
       <BottomTab.Screen
         name="CryptoCurrencies"
         component={TabTwoNavigator}
@@ -51,6 +62,7 @@ const colorScheme = useColorScheme();
           tabBarIcon: ({ color }) => <SimpleLineIcons name="graph" size={24} color={color} />,
         }}
       />
+
     </BottomTab.Navigator>
   );
 }
@@ -102,5 +114,19 @@ function TabThreeNavigator() {
         options={{ headerTitle: 'Stocks', headerShown: false }}
       />
     </TabThreeStack.Navigator>
+  );
+}
+
+const TabFourStack = createStackNavigator<TabFourParamList>();
+
+function TabFourNavigator() {
+  return (
+    <TabFourStack.Navigator>
+      <TabFourStack.Screen
+        name="TabFourScreen"
+        component={TabFourScreen}
+        options={{ headerTitle: 'Crypto Trends', headerShown: false }}
+      />
+    </TabFourStack.Navigator>
   );
 }

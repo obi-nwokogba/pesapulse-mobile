@@ -1,40 +1,21 @@
+// Ask about conditionals in render JSX
+
 import * as React from 'react';
 import { useState, useEffect } from "react";
 import styles from "../components/styles";
-import * as WebBrowser from 'expo-web-browser';
-import { StyleSheet, TouchableOpacity } from 'react-native';
-import Colors from '../constants/Colors';
 import { SairaSB } from '../components/StyledText2';
-//import { Text, View } from './Themed';
-//import EditScreenInfo from '../components/EditScreenInfo';
 import UniversalFooter from '../components/UniversalFooter';
 import { Text, View } from '../components/Themed';
-import styled from 'styled-components';
-import { useNavigation } from '@react-navigation/native';
-import { baseProps } from 'react-native-gesture-handler/lib/typescript/handlers/gestureHandlers';
-import { NavigationContainer } from '@react-navigation/native';
+import { StyleSheet, ImageBackground, ScrollView, TouchableOpacity } from 'react-native';
+import Hyperlink from 'react-native-hyperlink';
+import { AntDesign } from '@expo/vector-icons';
 
-//global.current = "ethereum";
 
 export default function TabTwoScreen() {
 
   let symbol = global.currentcrypto;
   let coinname = global.currentcrypto;
   let lastloadedcrypto = "";
-
-  const DataContainer = styled.View`
-flex:0.23;
-border:2px solid #f0f0f0;
-margin:2px 0;
-border-radius:10px;
-box-shadow:0 0 10px #eaeaea;
-background-color:#fff;
-width:90%;
-padding:18px;
-padding-top:5px;
-padding-bottom:7px;
-height:20px;
-line-height:10px;`;
 
   // Additional function for formatting numbers
   function numberWithCommas(x) {
@@ -44,7 +25,7 @@ line-height:10px;`;
   const [crypto, setCrypto] = useState(null);
 
   const getCrypto = async () => {
-    const response = await fetch(`https://api.coingecko.com/api/v3/coins/${global.currentcrypto}`);
+    const response = await fetch(`https://api.coingecko.com/api/v3/coins/${symbol}`);
     const data = await response.json();
     setCrypto(data);
   }
@@ -55,66 +36,137 @@ line-height:10px;`;
 
   if (lastloadedcrypto != global.currentcrypto) {
     getCrypto();
-    //setInterval(function () {
-     // getCrypto();
-    //}, 3000);
   }
 
   const loaded = () => {
     let marketcapnumber = numberWithCommas(parseInt(crypto['market_data']['market_cap']['usd']));
-
     let marketcap = "$" + marketcapnumber;
 
-    let currentprice = "$" + numberWithCommas(crypto['market_data']['current_price']['usd']);
+    // Format the current price and add commas if its more than $100
+    let currentprice = crypto['market_data']['current_price']['usd'];
+    if (currentprice < 100) {
+      currentprice = "$" + currentprice;
+    }
+    else {
+      currentprice = "$" + numberWithCommas(crypto['market_data']['current_price']['usd']);
+    }
 
-    let twentyfourhourchange = crypto['market_data']['price_change_24h'] + "%";
+    let twentyfourhourchangepercentage = crypto['market_data']['price_change_percentage_24h'];
+    let twentyfourhourchangenumber = crypto['market_data']['price_change_24h'];
+    let twentyfourhourchange = "$" + crypto['market_data']['price_change_24h'];
+
+
+    let sevendaychangepercentage = crypto['market_data']['price_change_percentage_7d'];
+    let thirtydaychangepercentage = crypto['market_data']['price_change_percentage_30d'];
+    let sevendaychangepriceusd = crypto['market_data']['price_change_percentage_7d_in_currency']['usd'];
+    let sevendaychangepricestring = "$" + sevendaychangepriceusd;
 
     let marketcaprank = crypto['market_cap_rank'];
-
-    let twentyfourhourvolume = 233;
-
+    let blocktimeinminutes = crypto['block_time_in_minutes'];
     let formalname = crypto['name'];
     let coinsymbol = crypto['symbol'];
+    let description = crypto['description']['en'];
 
     lastloadedcrypto = global.currentcrypto;
 
     return (
+      <ScrollView style={styles.cryptocontainer}>
 
-      <View style={styles.container}>
         <Text style={styles.symbolheader}>{formalname}</Text>
         <Text style={styles.coinsubdetails}>{marketcaprank} &middot; {coinsymbol}</Text>
 
-        <DataContainer>
-          <Text style={styles.dataheader}>current price (USD)</Text>
+        <View style={styles.datacontainer}>
+          <Text style={styles.dataheader}>Current Price ($ USD)</Text>
           <SairaSB style={styles.priceNumber}>{currentprice}</SairaSB>
-        </DataContainer>
+        </View>
 
-        <DataContainer>
-          <Text style={styles.dataheader}>24hr change</Text>
-          <Text style={styles.priceNumber}>{twentyfourhourchange}</Text>
-        </DataContainer>
+        <View style={styles.datacontainer}>
+          <Text style={styles.dataheader}>24-hour Change</Text>
 
-        <DataContainer>
-          <Text style={styles.dataheader}>24hr Volume</Text>
-          <Text style={styles.priceNumber}>{twentyfourhourvolume}</Text>
-        </DataContainer>
+          {/* <Text 
+            style={[twentyfourhourchangenumber > 0 ? styles.greenPriceNumber : styles.redPriceNumber]}
+          >
+            {twentyfourhourchange}
+          </Text>  */}
 
-        <DataContainer>
+
+          {twentyfourhourchangenumber >= 0 ? (
+            
+            <Text style={styles.greenPriceNumber}>
+              <AntDesign style={styles.indicatorarrow} name="caretup" size={24} color="#22a824" />
+             {twentyfourhourchangepercentage}%{"\n"}
+             <Text style={styles.posgreen}>&nbsp;&nbsp;&nbsp;&nbsp;{twentyfourhourchange} </Text>
+          </Text>
+          
+          ):(
+          <Text style={styles.redPriceNumber} >
+            <AntDesign style={styles.indicatorarrow} name="caretdown" size={24} color="#ff2033" />&nbsp;
+            {twentyfourhourchangepercentage}%{"\n"}
+            <Text style={styles.posred}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{twentyfourhourchange} </Text>
+            </Text>)
+          } 
+        </View>
+
+{/* SEVEN DAY PRICE CHANGE */}
+        <View style={styles.datacontainer}>
+          <Text style={styles.dataheader}>7-day Change %</Text>
+
+          {sevendaychangepriceusd >= 0 ? (
+            
+            <Text style={styles.greenPriceNumber}>
+              <AntDesign style={styles.indicatorarrow} name="caretup" size={24} color="#22a824" />&nbsp;
+             {sevendaychangepercentage}%
+          </Text>
+          ):(
+          <Text style={styles.redPriceNumber} >
+            <AntDesign style={styles.indicatorarrow} name="caretdown" size={24} color="#ff2033" />&nbsp;
+            {sevendaychangepercentage}%
+            </Text>)
+          } 
+        </View>
+
+        {/* THIRTY DAY PRICE CHANGE */}
+        <View style={styles.datacontainer}>
+          <Text style={styles.dataheader}>30-day Change %</Text>
+          {thirtydaychangepercentage >= 0 ? (
+            <Text style={styles.greenPriceNumber}>
+              <AntDesign style={styles.indicatorarrow} name="caretup" size={24} color="#22a824" />&nbsp;
+             {thirtydaychangepercentage}%
+          </Text>
+          ):(
+          <Text style={styles.redPriceNumber} >
+            <AntDesign style={styles.indicatorarrow} name="caretdown" size={24} color="#ff2033" />&nbsp;
+            {thirtydaychangepercentage}%
+            </Text>)
+          } 
+          
+        </View>
+
+
+
+        <View style={styles.datacontainer}>
           <Text style={styles.dataheader}>market cap</Text>
           <SairaSB style={styles.priceNumber}>{marketcap}</SairaSB>
-        </DataContainer>
+          </View>
 
-        <DataContainer>
+        <View style={styles.datacontainer}>
           <Text style={styles.dataheader}>Market Cap Rank</Text>
           <SairaSB style={styles.priceNumber}>{marketcaprank}</SairaSB>
-        </DataContainer>
+          </View>
 
+        <View style={styles.datacontainer}>
+          <Text style={styles.dataheader}>block time in minutes</Text>
+          <Text style={styles.priceNumber}>{blocktimeinminutes}</Text>
+          </View>
+
+        <View style={styles.datacontainer}>
+        <Hyperlink linkDefault={ true }>
+          <Text style={styles.descriptiontext}>{description}</Text></Hyperlink>
+          </View>
         <UniversalFooter />
-      </View>
+      </ScrollView>
     );
-
-    global.currentcrypto = "";
-  } // end of return function
+  } 
 
   const loading = () => {
     getCrypto();

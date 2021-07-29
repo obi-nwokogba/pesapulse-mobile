@@ -1,88 +1,92 @@
+// Ask about conditionals in render JSX
+
 import * as React from 'react';
-import axios from 'axios';
 import { useState, useEffect } from "react";
-import styles from "../components/styles"
-import * as WebBrowser from 'expo-web-browser';
-import { StyleSheet, TouchableOpacity } from 'react-native';
-import Colors from '../constants/Colors';
+import styles from "../components/styles";
 import { SairaSB } from '../components/StyledText2';
-//import { Text, View } from './Themed';
-//import EditScreenInfo from '../components/EditScreenInfo';
 import UniversalFooter from '../components/UniversalFooter';
 import { Text, View } from '../components/Themed';
-import styled from 'styled-components';
+import { StyleSheet, ImageBackground, ScrollView, TouchableOpacity } from 'react-native';
+import Hyperlink from 'react-native-hyperlink';
+import { AntDesign } from '@expo/vector-icons';
+
 
 export default function TabFourScreen() {
 
 
+  // Additional function for formatting numbers
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
 
-  let apiKey = "c2qq5lqad3ickc1m1gsg";
-  let symbol = "AAPL";
-  var currentprice, responseobject = "";
+  const [crypto, setCrypto] = useState(null);
 
-  const url1 = `https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${apiKey}`;
-  const url2 = `https://finnhub.io/api/v1/stock/profile2?symbol=${symbol}&token=${apiKey}`;
-
-  const DataContainer = styled.View`
-flex:0.23;
-border:2px solid #f0f0f0;
-margin:2px 0;
-border-radius:10px;
-box-shadow:0 0 10px #eaeaea;
-background-color:#fff;
-width:90%;
-padding:18px;
-padding-top:5px;
-padding-bottom:7px;
-height:20px;
-line-height:10px;`;
-
-  const [stock, setStock] = useState(null);
-
-  const getStock = async () => {
-    const response = await fetch('https://finnhub.io/api/v1/quote?symbol=AAPL&token=c3d04bqad3i868don970');
+  const getCrypto = async () => {
+    const response = await fetch(`https://api.coingecko.com/api/v3/global`);
     const data = await response.json();
-    setStock(data);
+    setCrypto(data);
   }
 
   useEffect(() => {
-    getStock();
+    getCrypto();
   }, []);
 
   const loaded = () => {
-    let openingprice = stock.o;
-    let currentprice = stock.c;
-    let todayshighprice = stock.h;
+
+
+    let activecryptocurrencies = crypto['data']['active_cryptocurrencies'];
+    let ongoingicos = crypto['data']['ongoing_icos'];
+    let markets = crypto['data']['markets'];
+    let marketcappercentage = crypto['data']['market_cap_percentage'];
+
 
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.cryptocontainer}>
 
-        <Text style={styles.symbol}>{symbol}</Text>
-        <Text style={styles.title}>Symbol</Text>
+        <Text style={styles.symbolheader}>trends</Text>
+        <Text style={styles.coinsubdetails}>crypto summary</Text>
 
-        <DataContainer>
-          <Text style={styles.dataheader}>today's high price</Text>
-          <SairaSB style={styles.priceNumber}>{todayshighprice}</SairaSB>
-        </DataContainer>
+        <View style={styles.datacontainer}>
+          <Text style={styles.dataheader}>Active CryptoCurrencies</Text>
+          <SairaSB style={styles.priceNumber}>{activecryptocurrencies}</SairaSB>
+        </View>
+        <View style={styles.datacontainer}>
+          <Text style={styles.dataheader}>Ongoing ICOs</Text>
+          <SairaSB style={styles.priceNumber}>{ongoingicos}</SairaSB>
+        </View>
 
-        <DataContainer>
-          <Text style={styles.dataheader}>current price</Text>
-          <Text style={styles.priceNumber}>{currentprice}</Text>
-        </DataContainer>
+        <Text style={styles.coinsubdetails}>MARKET CAP SHARE</Text>
 
-        <DataContainer>
-          <Text style={styles.dataheader}>opening price</Text>
-          <SairaSB style={styles.priceNumber}>{openingprice}</SairaSB>
-        </DataContainer>
+
+        <Text style={styles.mktcapheader}>BTC : {marketcappercentage.btc.toFixed(3)}%</Text>
+        <Text style={styles.coinsubdetails}>Bitcoin</Text>
+
+        <Text style={styles.mktcapheader}>ETH : {marketcappercentage.eth.toFixed(3)}%</Text>
+        <Text style={styles.coinsubdetails}>Ethereum</Text>
+
+        <Text style={styles.mktcapheader}>USDT : {marketcappercentage.usdt.toFixed(3)}%</Text>
+        <Text style={styles.coinsubdetails}>Tether</Text>
+
+        <Text style={styles.mktcapheader}>BNB : {marketcappercentage.bnb.toFixed(3)}%</Text>
+        <Text style={styles.coinsubdetails}>Binance Coin</Text>
+
+        <Text style={styles.mktcapheader}>ADA : {marketcappercentage.ada.toFixed(3)}%</Text>
+        <Text style={styles.coinsubdetails}>Cardano</Text>
+
+        <Text style={styles.mktcapheader}>XRP : {marketcappercentage.bnb.toFixed(3)}%</Text>
+        <Text style={styles.coinsubdetails}>Ripple</Text>
+
+
 
         <UniversalFooter />
-      </View>
+      </ScrollView>
     );
-  } // end of return function
+  } 
 
   const loading = () => {
+    getCrypto();
     return <Text>Loading...</Text>;
   }
 
-  return stock ? loaded() : loading();
+  return crypto ? loaded() : loading();
 }

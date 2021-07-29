@@ -22,7 +22,8 @@ export default StyleSheet.create({
         borderTopWidth:2,
         borderTopColor:'#d8d8d8',
         paddingBottom: 10,
-        fontFamily:'mplus1regular'
+        fontFamily:'mplus1regular',
+        textAlign:'center'
     },
     image: {
         flex: 1,
@@ -39,8 +40,24 @@ export default StyleSheet.create({
         padding: 10,
         paddingTop: 5,
         paddingBottom: 8,
-        lineHeight: 30
+        lineHeight: 30,
+        minHeight:82
     },
+
+    datacontainer:{
+        marginTop:7,
+        borderRadius:13,
+        padding:13,
+        paddingBottom:7,
+        paddingTop:7,
+        backgroundColor:'#ffffff',
+        lineHeight:10
+    },
+    centeredtext:{
+        textAlign:'center'
+    },
+
+
     listscrollview: {
         paddingTop: 10,
         paddingBottom: 300,
@@ -54,7 +71,7 @@ export default StyleSheet.create({
         justifyContent: 'center',
         textAlign: 'left',
         backgroundColor: "#f0f0f0",
-        flexDirection: 'column'
+        flexDirection: 'row'
     },
     container: {
         flex: 1,
@@ -63,6 +80,14 @@ export default StyleSheet.create({
         textAlign: 'left',
         backgroundColor: "#f0f0f0"
     },
+    // SCROLL VIEW containing cryptos
+    cryptocontainer: {
+        flex:1,
+        marginHorizontal: 20,
+        textAlign: 'center',
+        backgroundColor: "#f0f0f0",
+        height:1200,
+    },
     symbol: {
         color: '#68C2FF',
         fontSize: 50,
@@ -70,11 +95,22 @@ export default StyleSheet.create({
     },
     symbolheader: {
         color: '#7e7e7e',
-        fontSize: 40,
+        fontSize: 38,
         fontWeight: "700",
         paddingTop: 50,
-        fontFamily:'mplus1bold'
+        fontFamily:'mplus1bold',
+        textAlign:'center'
     },
+
+    mktcapheader: {
+        color: '#636363',
+        fontSize: 34,
+        fontWeight: "700",
+        paddingTop: 5,
+        fontFamily:'mplus1bold',
+        textAlign:'center'
+    },
+
     listingBigName:
     {
         color: '#1872F0',
@@ -89,21 +125,51 @@ export default StyleSheet.create({
         fontFamily: 'sairaextracondensedsemibold'
     },
     greenPriceNumber: {
-        color: '#10C471',
-        fontSize: 45,
+        color: '#22a824',
+        fontSize: 40,
         fontFamily: 'sairaextracondensedsemibold'
     },
+    posgreen:{
+        marginLeft:200,
+        paddingLeft:200,
+        borderRightWidth:30,
+        fontSize:40,
+        lineHeight:40,
+        color: '#22a824',
+    },
     redPriceNumber: {
-        color: '#ff4550',
-        fontSize: 45,
-        fontFamily: 'sairaextracondensedsemibold'
+        color: '#ff2033',
+        fontSize: 40,
+        fontFamily: 'sairaextracondensedsemibold',
+        lineHeight:70
+    },
+    posred:{
+        marginLeft:200,
+        paddingLeft:200,
+        borderRightWidth:30,
+        fontSize:40,
+        lineHeight:40,
+        color: '#ff2033',
+    },
+    indicatorarrow:{
+        paddingRight:20
     },
 
     dataheader: {
+        fontSize: 15,
+        marginBottom: -10,
+        color: '#5a5a5a',
+        fontFamily:'mplus1regular'
+    },
+
+    descriptiontext: {
         fontSize: 16,
         marginBottom: -10,
-        color: '#5a5a5a'
+        color: '#2a2a2a',
+        fontFamily:'mplus1regular',
+        padding:13
     },
+
     dataContainer: {
     },
     homeScreenFilename: {
