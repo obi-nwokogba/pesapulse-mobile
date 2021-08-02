@@ -9,6 +9,8 @@ import { Text, View } from '../components/Themed';
 import { StyleSheet, ImageBackground, ScrollView, TouchableOpacity } from 'react-native';
 import Hyperlink from 'react-native-hyperlink';
 import { AntDesign } from '@expo/vector-icons';
+import obicurrencies from '../assets/obicurrencies.json';
+
 
 
 export default function TabFourScreen() {
@@ -38,6 +40,7 @@ export default function TabFourScreen() {
     let ongoingicos = crypto['data']['ongoing_icos'];
     let markets = crypto['data']['markets'];
     let marketcappercentage = crypto['data']['market_cap_percentage'];
+    let marketcappercentagekeys = Object.keys(marketcappercentage);
 
 
     return (
@@ -46,42 +49,114 @@ export default function TabFourScreen() {
         <Text style={styles.symbolheader}>trends</Text>
         <Text style={styles.coinsubdetails}>crypto summary</Text>
 
-        <View style={styles.datacontainer}>
-          <Text style={styles.dataheader}>Active CryptoCurrencies</Text>
-          <SairaSB style={styles.priceNumber}>{activecryptocurrencies}</SairaSB>
+        <Text style={styles.cointrendheader}>MARKET OVERVIEW</Text>
+
+
+        <Text style={styles.mktcapheader}>
+          {activecryptocurrencies}</Text>
+        <Text style={styles.coinsubdetails}>
+          Active Cryptocurrencies
+        </Text>
+
+        <Text style={styles.mktcapheader}>
+          {ongoingicos}</Text>
+        <Text style={styles.coinsubdetails}>
+          Ongoing ICOs
+        </Text>
+
+        <Text style={styles.cointrendheader}>Market Cap Percentage</Text>
+
+        <Text style={styles.mktcapheader}>
+          1 &middot; {marketcappercentagekeys[0]}&nbsp;
+          {marketcappercentage.[marketcappercentagekeys[0]].toFixed(3)}%</Text>
+        <Text style={styles.coinsubdetails}>
+          {obicurrencies[marketcappercentagekeys[0]]}
+        </Text>
+
+        <Text style={styles.mktcapheader}>
+          2 &middot; {marketcappercentagekeys[1]}&nbsp;
+          {marketcappercentage.[marketcappercentagekeys[1]].toFixed(3)}%</Text>
+        <Text style={styles.coinsubdetails}>
+          {obicurrencies[marketcappercentagekeys[1]]}
+        </Text>
+
+        <Text style={styles.mktcapheader}>
+          3 &middot; {marketcappercentagekeys[2]}&nbsp;
+          {marketcappercentage.[marketcappercentagekeys[2]].toFixed(3)}%</Text>
+        <Text style={styles.coinsubdetails}>
+          {obicurrencies[marketcappercentagekeys[2]]}
+        </Text>
+
+        <Text style={styles.mktcapheader}>
+          4 &middot; {marketcappercentagekeys[3]}&nbsp;
+          {marketcappercentage.[marketcappercentagekeys[3]].toFixed(3)}%</Text>
+        <Text style={styles.coinsubdetails}>
+          {obicurrencies[marketcappercentagekeys[3]]}
+        </Text>
+
+        <Text style={styles.mktcapheader}>
+          5 &middot; {marketcappercentagekeys[4]}&nbsp;
+          {marketcappercentage.[marketcappercentagekeys[4]].toFixed(3)}%</Text>
+        <Text style={styles.coinsubdetails}>
+          {obicurrencies[marketcappercentagekeys[4]]}
+        </Text>
+
+        <Text style={styles.mktcapheader}>
+          6 &middot; {marketcappercentagekeys[5]}&nbsp;
+          {marketcappercentage.[marketcappercentagekeys[5]].toFixed(3)}%</Text>
+        <Text style={styles.coinsubdetails}>
+          {obicurrencies[marketcappercentagekeys[5]]}
+        </Text>
+
+        <Text style={styles.mktcapheader}>
+          7 &middot; {marketcappercentagekeys[6]}&nbsp;
+          {marketcappercentage.[marketcappercentagekeys[6]].toFixed(3)}%</Text>
+        <Text style={styles.coinsubdetails}>
+          {obicurrencies[marketcappercentagekeys[6]]}
+        </Text>
+
+        <Text style={styles.mktcapheader}>
+          8 &middot; {marketcappercentagekeys[7]}&nbsp;
+          {marketcappercentage.[marketcappercentagekeys[7]].toFixed(3)}%</Text>
+        <Text style={styles.coinsubdetails}>
+          {obicurrencies[marketcappercentagekeys[7]]}
+        </Text>
+
+        <Text style={styles.mktcapheader}>
+          9 &middot; {marketcappercentagekeys[8]}&nbsp;
+          {marketcappercentage.[marketcappercentagekeys[8]].toFixed(3)}%</Text>
+        <Text style={styles.coinsubdetails}>
+          {obicurrencies[marketcappercentagekeys[9]]}
+        </Text>
+
+        <Text style={styles.mktcapheader}>
+          10 &middot; {marketcappercentagekeys[9]}&nbsp;
+          {marketcappercentage.[marketcappercentagekeys[9]].toFixed(3)}%</Text>
+        <Text style={styles.coinsubdetails}>
+          {obicurrencies[marketcappercentagekeys[9]]}
+        </Text>
+
+        <Text style={styles.cointrendheader}>Popular Cryptos</Text>
+
+        <View style={styles.coinmegalistcontainer}>
+
+         <Text>
+            {Object.keys(obicurrencies).map((key) => (
+               <Text style={styles.coinmegalistitem}>
+            {key} &middot; </Text>
+            ))}
+            </Text>
+
+          
+
         </View>
-        <View style={styles.datacontainer}>
-          <Text style={styles.dataheader}>Ongoing ICOs</Text>
-          <SairaSB style={styles.priceNumber}>{ongoingicos}</SairaSB>
-        </View>
-
-        <Text style={styles.coinsubdetails}>MARKET CAP SHARE</Text>
-
-
-        <Text style={styles.mktcapheader}>BTC : {marketcappercentage.btc.toFixed(3)}%</Text>
-        <Text style={styles.coinsubdetails}>Bitcoin</Text>
-
-        <Text style={styles.mktcapheader}>ETH : {marketcappercentage.eth.toFixed(3)}%</Text>
-        <Text style={styles.coinsubdetails}>Ethereum</Text>
-
-        <Text style={styles.mktcapheader}>USDT : {marketcappercentage.usdt.toFixed(3)}%</Text>
-        <Text style={styles.coinsubdetails}>Tether</Text>
-
-        <Text style={styles.mktcapheader}>BNB : {marketcappercentage.bnb.toFixed(3)}%</Text>
-        <Text style={styles.coinsubdetails}>Binance Coin</Text>
-
-        <Text style={styles.mktcapheader}>ADA : {marketcappercentage.ada.toFixed(3)}%</Text>
-        <Text style={styles.coinsubdetails}>Cardano</Text>
-
-        <Text style={styles.mktcapheader}>XRP : {marketcappercentage.bnb.toFixed(3)}%</Text>
-        <Text style={styles.coinsubdetails}>Ripple</Text>
 
 
 
         <UniversalFooter />
       </ScrollView>
     );
-  } 
+  }
 
   const loading = () => {
     getCrypto();

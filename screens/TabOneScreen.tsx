@@ -4,14 +4,15 @@ import { StyleSheet, ImageBackground, ScrollView, TouchableOpacity } from 'react
 import { SairaSB } from '../components/StyledText2';
 import UniversalFooter from '../components/UniversalFooter';
 import { Text, View } from '../components/Themed';
+import currencies from '../assets/currencies.json';
 
 global.currentcrypto = "bitcoin";
 global.currentstock = "AAPL";
+global.lastloadedstock = "";
 global.stockloadcount = false;
+global.currencies = currencies;
 
 export default function TabOneScreen({ navigation: { navigate } }) {
-
-  //const image = { uri: "https://i.imgur.com/t7YsvW4.png" };
 
   function setcurrentcrypto(newcurrentcrypto) {
     global.currentcrypto = newcurrentcrypto;
@@ -24,11 +25,16 @@ export default function TabOneScreen({ navigation: { navigate } }) {
   }
 
   return (
-    // <ImageBackground source={image} style={styles.image}>
     <View style={styles.homelistcontainer}>
       <ScrollView style={styles.listscrollview}>
         <Text style={styles.scrolllistheader}>cryptos</Text>
 
+        <TouchableOpacity style={styles.assetlistitem} onPress={() => {
+          setcurrentcrypto('aave');
+        }}>
+          <Text style={styles.dataheader}>AAVE</Text>
+          <SairaSB style={styles.listingBigName}>AAVE</SairaSB>
+        </TouchableOpacity>
 
         <TouchableOpacity style={styles.assetlistitem} onPress={() => {
           setcurrentcrypto('binancecoin');
@@ -72,6 +78,15 @@ export default function TabOneScreen({ navigation: { navigate } }) {
           <Text style={styles.listingBigName}>Chainlink</Text>
         </TouchableOpacity>
 
+
+        <TouchableOpacity style={styles.assetlistitem} onPress={() => {
+          setcurrentcrypto('crypto-com-chain');
+        }}>
+          <Text style={styles.dataheader}>CRO</Text>
+          <Text style={styles.listingBigName}>Crypto.com Coin</Text>
+        </TouchableOpacity>
+
+
         <TouchableOpacity style={styles.assetlistitem} onPress={() => {
           setcurrentcrypto('dai');
         }}>
@@ -108,10 +123,24 @@ export default function TabOneScreen({ navigation: { navigate } }) {
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.assetlistitem} onPress={() => {
+          setcurrentcrypto('ethereum-classic');
+        }}>
+          <Text style={styles.dataheader}>ETC</Text>
+          <Text style={styles.listingBigName}>Ethereum Classic</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.assetlistitem} onPress={() => {
           setcurrentcrypto('filecoin');
         }}>
-          <Text style={styles.dataheader}>fil</Text>
+          <Text style={styles.dataheader}>FIL</Text>
           <Text style={styles.listingBigName}>Filecoin</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.assetlistitem} onPress={() => {
+          setcurrentcrypto('ftx-token');
+        }}>
+          <Text style={styles.dataheader}>FTT</Text>
+          <Text style={styles.listingBigName}>FTX Token</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.assetlistitem} onPress={() => {
@@ -127,8 +156,6 @@ export default function TabOneScreen({ navigation: { navigate } }) {
           <Text style={styles.dataheader}>ICP</Text>
           <Text style={styles.listingBigName}>Internet Computer</Text>
         </TouchableOpacity>
-
-
 
         <TouchableOpacity style={styles.assetlistitem} onPress={() => {
           setcurrentcrypto('iota');
@@ -163,6 +190,13 @@ export default function TabOneScreen({ navigation: { navigate } }) {
         }}>
           <Text style={styles.dataheader}>OMG</Text>
           <Text style={styles.listingBigName}>OMG Network</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.assetlistitem} onPress={() => {
+          setcurrentcrypto('pancakeswap-token');
+        }}>
+          <Text style={styles.dataheader}>CAKE</Text>
+          <Text style={styles.listingBigName}>PancakeSwap</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.assetlistitem} onPress={() => {
@@ -209,6 +243,24 @@ export default function TabOneScreen({ navigation: { navigate } }) {
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.assetlistitem} onPress={() => {
+          setcurrentcrypto('terra-luna');
+        }}>
+          <Text style={styles.dataheader}>LUNA</Text>
+          <Text style={styles.listingBigName}>Terra</Text>
+        </TouchableOpacity>
+
+
+
+        <TouchableOpacity style={styles.assetlistitem} onPress={() => {
+          setcurrentcrypto('the-graph');
+        }}>
+          <Text style={styles.dataheader}>GRT</Text>
+          <Text style={styles.listingBigName}>The Graph</Text>
+        </TouchableOpacity>
+
+
+
+        <TouchableOpacity style={styles.assetlistitem} onPress={() => {
           setcurrentcrypto('theta');
         }}>
           <Text style={styles.dataheader}>THETA</Text>
@@ -235,6 +287,13 @@ export default function TabOneScreen({ navigation: { navigate } }) {
         }}>
           <Text style={styles.dataheader}>VET</Text>
           <Text style={styles.listingBigName}>VeChain</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.assetlistitem} onPress={() => {
+          setcurrentcrypto('wrapped-bitcoin');
+        }}>
+          <Text style={styles.dataheader}>WBTC</Text>
+          <Text style={styles.listingBigName}>Wrapped Bitcoin</Text>
         </TouchableOpacity>
 
 

@@ -54,13 +54,10 @@ export default function TabTwoScreen() {
     let twentyfourhourchangepercentage = crypto['market_data']['price_change_percentage_24h'];
     let twentyfourhourchangenumber = crypto['market_data']['price_change_24h'];
     let twentyfourhourchange = "$" + crypto['market_data']['price_change_24h'];
-
-
     let sevendaychangepercentage = crypto['market_data']['price_change_percentage_7d'];
     let thirtydaychangepercentage = crypto['market_data']['price_change_percentage_30d'];
     let sevendaychangepriceusd = crypto['market_data']['price_change_percentage_7d_in_currency']['usd'];
     let sevendaychangepricestring = "$" + sevendaychangepriceusd;
-
     let marketcaprank = crypto['market_cap_rank'];
     let blocktimeinminutes = crypto['block_time_in_minutes'];
     let formalname = crypto['name'];

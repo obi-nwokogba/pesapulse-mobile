@@ -25,6 +25,28 @@ export default StyleSheet.create({
         fontFamily:'mplus1regular',
         textAlign:'center'
     },
+    coinmegalistcontainer:{
+        display:'flex',
+        alignContent: 'flex-start',
+        backgroundColor:'#f0f0f0',
+        borderWidth:0
+    },
+    coinmegalistitem: {
+        color: '#7b7b7b',
+        fontSize: 16,
+        fontWeight: "200",
+        textTransform: "uppercase",
+        letterSpacing: 2,
+        borderTopWidth:2,
+        borderColor:'#d8d8d8',
+        fontFamily:'mplus1regular',
+        textAlign:'center',
+        borderWidth:1,
+        borderRadius:3,
+        marginTop:5,
+        paddingLeft:13,
+        borderLeftWidth:6
+    },
     image: {
         flex: 1,
         justifyContent: "center"
@@ -80,6 +102,24 @@ export default StyleSheet.create({
         textAlign: 'left',
         backgroundColor: "#f0f0f0"
     },
+    cointrendheader:{
+        fontSize: 15,
+        fontWeight: "200",
+        textTransform: "uppercase",
+        letterSpacing: 2,
+        borderTopWidth:4,
+        borderBottomWidth:0,
+        borderTopColor:'#ffd213',
+        borderBottomColor:'#ffd213',
+        backgroundColor:'#ffffff',
+        color:'#0068d7',
+        paddingBottom: 8,
+        paddingTop: 12,
+        fontFamily:'mplus1bold',
+        textAlign:'center',
+        marginTop:30
+
+    },
     // SCROLL VIEW containing cryptos
     cryptocontainer: {
         flex:1,
@@ -104,7 +144,7 @@ export default StyleSheet.create({
 
     mktcapheader: {
         color: '#636363',
-        fontSize: 34,
+        fontSize: 32,
         fontWeight: "700",
         paddingTop: 5,
         fontFamily:'mplus1bold',

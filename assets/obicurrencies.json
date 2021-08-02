@@ -1,0 +1,24 @@
+{
+    "ada": "Cardano",
+    "bch": "Bitcoin Cash",
+    "bnb": "Binance Coin",
+    "busd": "Binance USD",
+    "btc": "Bitcoin",
+    "doge": "Dogecoin",
+    "dot": "Polkadot",
+    "etc": "Ethereum Classic",
+    "eth": "Ethereum",
+    "link": "Chainlink",
+    "ltc": "Litecoin",
+    "neo": "Neo",
+    "matic": "Polygon",
+    "sol": "Solana",
+    "grt": "The Graph",
+    
+    "xrp": "XRP",
+    "uni": "Uniswap",
+    "usdc": "USD Coin",
+    "usdt": "Tether",
+    "wbtc": "Wrapped Bitcoin",
+    "xlm": "Stellar"
+}

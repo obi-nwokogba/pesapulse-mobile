@@ -23,6 +23,7 @@ const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
 export default function BottomTabNavigator() {
 const colorScheme = useColorScheme();
+const stocksymbol = "AAPL";
 
 
   return (
