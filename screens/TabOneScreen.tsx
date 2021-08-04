@@ -360,6 +360,13 @@ export default function TabOneScreen({ navigation: { navigate } }) {
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.assetlistitem} onPress={() => {
+          setcurrentstock('FB');
+        }}>
+          <Text style={styles.dataheader}>FB</Text>
+          <Text style={styles.listingBigName}>Facebook</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.assetlistitem} onPress={() => {
           setcurrentstock('F');
         }}>
           <Text style={styles.dataheader}>F</Text>
@@ -380,26 +387,7 @@ export default function TabOneScreen({ navigation: { navigate } }) {
           <Text style={styles.listingBigName}>Intel Corp</Text>
         </TouchableOpacity>
 
-        {/* { name: "3M", symbol: "MMM" },
-    { name: "Alphabet", symbol: "GOOG" },
-    { name: "Alibaba Group", symbol: "BABA" },
-    { name: "Apple", symbol: "AAPL" },
-    { name: "Bank of America Corp.", symbol: "BAC" },
-    { name: "Blackberry Holdings", symbol: "BB" },
-    { name: "The Boeing Company", symbol: "BA" },
-    { name: "Facebook", symbol: "FB" },
-    { name: "Ford Motor Company", symbol: "F" },
-    { name: "Sirius XM Holdings", symbol: "SIRI" },
-    { name: "JPMorgan Chase", symbol: "JPM" },
-    { name: "Mastercard Inc.", symbol: "MA" },
-    { name: "Microsoft", symbol: "MSFT" },
-    { name: "NVIDIA Corporation", symbol: "NVDA" },
-    { name: "Johnson & Johnson", symbol: "JNJ" },
-    { name: "Tesla", symbol: "TSLA" },
-    { name: "Intel", symbol: "INTC" },
-    { name: "Visa", symbol: "V" },
-    { name: "Walgreens Boots Alliance", symbol: "WBA" },
-    { name: "Walmart", symbol: "WMT" } */}
+
 
         <TouchableOpacity style={styles.assetlistitem} onPress={() => {
           setcurrentstock('INTC');
@@ -422,30 +410,44 @@ export default function TabOneScreen({ navigation: { navigate } }) {
           <Text style={styles.listingBigName}>Nike Inc</Text>
         </TouchableOpacity>
 
-        {/* <AssetListItem>
-            <Text style={styles.dataheader}>AAPL</Text>
-            <SairaSB style={styles.priceNumber}>Apple</SairaSB>
-          </AssetListItem>
 
-          <AssetListItem>
-            <Text style={styles.dataheader}>TSLA</Text>
-            <SairaSB style={styles.priceNumber}>Tesla</SairaSB>
-          </AssetListItem>
+        <TouchableOpacity style={styles.assetlistitem} onPress={() => {
+          setcurrentstock('TSLA');
+        }}>
+          <Text style={styles.dataheader}>TSLA</Text>
+          <Text style={styles.listingBigName}>Tesla</Text>
+        </TouchableOpacity>
 
-          <AssetListItem>
-            <Text style={styles.dataheader}>current price</Text>
-            <Text style={styles.priceNumber}>{currentprice}</Text>
-          </AssetListItem>
+        <TouchableOpacity style={styles.assetlistitem} onPress={() => {
+          setcurrentstock('V');
+        }}>
+          <Text style={styles.dataheader}>V</Text>
+          <Text style={styles.listingBigName}>VISA</Text>
+        </TouchableOpacity>
 
-          <AssetListItem>
-            <Text style={styles.dataheader}>today's high price</Text>
-            <SairaSB style={styles.priceNumber}>{todayshighprice}</SairaSB>
-          </AssetListItem>
 
-          <AssetListItem>
-            <Text style={styles.dataheader}>current price</Text>
-            <Text style={styles.priceNumber}>{currentprice}</Text>
-          </AssetListItem> */}
+        <TouchableOpacity style={styles.assetlistitem} onPress={() => {
+          setcurrentstock('WMT');
+        }}>
+          <Text style={styles.dataheader}>WMT</Text>
+          <Text style={styles.listingBigName}>Walmart</Text>
+        </TouchableOpacity>
+
+        {/* { name: "3M", symbol: "MMM" },
+    { name: "Alphabet", symbol: "GOOG" },
+    { name: "Alibaba Group", symbol: "BABA" },
+    { name: "Apple", symbol: "AAPL" },
+    { name: "Bank of America Corp.", symbol: "BAC" },
+    { name: "Blackberry Holdings", symbol: "BB" },
+    { name: "The Boeing Company", symbol: "BA" },
+    { name: "Facebook", symbol: "FB" },
+    { name: "Ford Motor Company", symbol: "F" },
+    { name: "Sirius XM Holdings", symbol: "SIRI" },
+    { name: "JPMorgan Chase", symbol: "JPM" },
+    { name: "Mastercard Inc.", symbol: "MA" },
+    { name: "Microsoft", symbol: "MSFT" },
+    { name: "NVIDIA Corporation", symbol: "NVDA" },
+      { name: "Walgreens Boots Alliance", symbol: "WBA" },  */}
 
         <UniversalFooter />
       </ScrollView>

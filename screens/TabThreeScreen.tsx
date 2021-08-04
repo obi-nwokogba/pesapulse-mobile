@@ -10,14 +10,12 @@ import { StyleSheet, ImageBackground, ScrollView, TouchableOpacity } from 'react
 import Hyperlink from 'react-native-hyperlink';
 import { AntDesign } from '@expo/vector-icons';
 
-//ALPHAVANTAGE KEY 1: 9CFWZAQA1FJTFRED
-//API KEY 2 YJ8ISH38VVWSWGN5
+//ALPHAVANTAGE 
+// API KEY 1: 9CFWZAQA1FJTFRED
+// API KEY 2 YJ8ISH38VVWSWGN5
 
 export default function TabThreeScreen() {
 
-  let symbol = global.currentstock;
-  //let stock = global.currentstock;
-  let lastloadedstock = "";
   let apikey = "";
 
   // Additional function for formatting numbers
@@ -25,108 +23,84 @@ export default function TabThreeScreen() {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
-  if(Math.floor(Math.random() * 101) > 50){
-    apikey = "9CFWZAQA1FJTFRED";
-  }
-  else{
-    apikey = "YJ8ISH38VVWSWGN5";
-  }
+  const [stock, setStock] = useState(null);
 
-  const [stock, setStock] = useState({});
-
-  const getStock = async () => {
-    const response = 
-    await fetch(`https://www.alphavantage.co/query?function=OVERVIEW&symbol=${symbol}&apikey=${apikey}`);
-    const data = await response.json();
-    setStock(data);
+  async function getStock() {
+    try {
+      let response = await fetch(
+        `https://finnhub.io/api/v1/quote?symbol=${global.currentstock}&token=c2qq5lqad3ickc1m1gsg`,
+      );
+      let responseJSON = await response.json();
+      console.log(responseJSON);
+      //return response;
+      //alert(JSON.stringify(responseJSON));
+      setStock(responseJSON);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   useEffect(() => {
-    if (lastloadedstock != global.currentstock) {
-      getStock();
-    }
+    getStock();
   }, []);
 
-  if (lastloadedstock != global.currentstock) {
+  if (String(global.lastloadedstock) != String(global.currentstock)) {
     getStock();
   }
 
   const loaded = () => {
 
-    /*
-    let marketcapnumber = numberWithCommas(parseInt(crypto['market_data']['market_cap']['usd']));
-    let marketcap = "$" + marketcapnumber;
+    //alert(`Last Loaded:${global.lastloadedstock} and Global ${global.currentstock}`)
 
-    // Format the current price and add commas if its more than $100
-    let currentprice = crypto['market_data']['current_price']['usd'];
-    if (currentprice < 100) {
-      currentprice = "$" + currentprice;
-    }
-    else {
-      currentprice = "$" + numberWithCommas(crypto['market_data']['current_price']['usd']);
-    }
-
-    let twentyfourhourchangepercentage = crypto['market_data']['price_change_percentage_24h'];
-    let twentyfourhourchangenumber = crypto['market_data']['price_change_24h'];
-    let twentyfourhourchange = "$" + crypto['market_data']['price_change_24h'];
-
-
-    let sevendaychangepercentage = crypto['market_data']['price_change_percentage_7d'];
-    let thirtydaychangepercentage = crypto['market_data']['price_change_percentage_30d'];
-    let sevendaychangepriceusd = crypto['market_data']['price_change_percentage_7d_in_currency']['usd'];
-    let sevendaychangepricestring = "$" + sevendaychangepriceusd;
-
-    let marketcaprank = crypto['market_cap_rank'];
-    let blocktimeinminutes = crypto['block_time_in_minutes'];
-    
-    let coinsymbol = crypto['symbol'];
-    let description = crypto['description']['en'];
-
-    */
-
-    let formalname = stock['Name'];
-    let exchange = stock['Exchange'];
-    let officialsymbol = stock['Symbol'];
-    let sector = stock['Sector'];
-    let description = stock['Description'];
-    let dividendpershare = stock['DividendPerShare'];
-    let profitmargin = stock['ProfitMargin'];
+    let currentprice = stock['c'];
+    let change = stock['d'];
+    let percentchange = stock['dp'];
+    let highoftheday = stock['h'];
+    let description = stock['l'];
+    let openpriceoftheday = stock['o'];
+    let previouscloseprice = stock['pc'];
+    let profitmargin = stock['t'];
 
     let marketcapnumber = numberWithCommas(parseInt(stock['MarketCapitalization']));
     let marketcap = "$" + marketcapnumber;
 
-    lastloadedstock = global.exchange;
+    global.lastloadedstock = global.currentstock;
 
     return (
       <ScrollView style={styles.cryptocontainer}>
 
-        <Text style={styles.symbolheader}>{formalname}</Text>
-        <Text style={styles.coinsubdetails}>{officialsymbol} &middot; {exchange} &middot; {sector}</Text>
+        <Text style={styles.symbolheader}>{global.currentstock}</Text>
+        <Text style={styles.coinsubdetails}>{global.currentstock}</Text>
 
         <View style={styles.datacontainer}>
-          <Text style={styles.dataheader}>Market Capitalization ($ USD)</Text>
-          <SairaSB style={styles.priceNumber}>{marketcap}</SairaSB>
+          <Text style={styles.dataheader}>Current Price</Text>
+          <SairaSB style={styles.priceNumber}>${currentprice}</SairaSB>
         </View>
 
         <View style={styles.datacontainer}>
-          <Text style={styles.dataheader}>Dividend Per Share</Text>
-          <SairaSB style={styles.priceNumber}>${dividendpershare}</SairaSB>
+          <Text style={styles.dataheader}>Change</Text>
+          <SairaSB style={styles.priceNumber}>${change}</SairaSB>
         </View>
 
         <View style={styles.datacontainer}>
-          <Text style={styles.dataheader}>Profit Margin</Text>
-          <SairaSB style={styles.priceNumber}>{profitmargin}</SairaSB>
+          <Text style={styles.dataheader}>Percent Change</Text>
+          <SairaSB style={styles.priceNumber}>{percentchange}%</SairaSB>
         </View>
 
         <View style={styles.datacontainer}>
-        <Hyperlink linkDefault={ true }>
-          <Text style={styles.descriptiontext}>{description}</Text></Hyperlink>
-          </View>
+          <Text style={styles.dataheader}>High Price of the Day</Text>
+          <SairaSB style={styles.priceNumber}>{highoftheday}</SairaSB>
+        </View>
+
+        <View style={styles.datacontainer}>
+          <Text style={styles.dataheader}>Previous Close Price</Text>
+          <SairaSB style={styles.priceNumber}>{previouscloseprice}</SairaSB>
+        </View>
 
         <UniversalFooter />
       </ScrollView>
     );
-  } 
+  }
 
   const loading = () => {
     getStock();

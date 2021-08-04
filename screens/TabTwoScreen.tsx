@@ -25,9 +25,10 @@ export default function TabTwoScreen() {
   const [crypto, setCrypto] = useState(null);
 
   const getCrypto = async () => {
-    const response = await fetch(`https://api.coingecko.com/api/v3/coins/${symbol}`);
-    const data = await response.json();
-    setCrypto(data);
+      const response = await fetch(`https://api.coingecko.com/api/v3/coins/${symbol}`);
+      const data = await response.json();
+      lastloadedcrypto == global.currentcrypto;
+      setCrypto(data);
   }
 
   useEffect(() => {
@@ -88,38 +89,38 @@ export default function TabTwoScreen() {
 
 
           {twentyfourhourchangenumber >= 0 ? (
-            
+
             <Text style={styles.greenPriceNumber}>
               <AntDesign style={styles.indicatorarrow} name="caretup" size={24} color="#22a824" />
-             {twentyfourhourchangepercentage}%{"\n"}
-             <Text style={styles.posgreen}>&nbsp;&nbsp;&nbsp;&nbsp;{twentyfourhourchange} </Text>
-          </Text>
-          
-          ):(
-          <Text style={styles.redPriceNumber} >
-            <AntDesign style={styles.indicatorarrow} name="caretdown" size={24} color="#ff2033" />&nbsp;
-            {twentyfourhourchangepercentage}%{"\n"}
-            <Text style={styles.posred}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{twentyfourhourchange} </Text>
+              {twentyfourhourchangepercentage}%{"\n"}
+              <Text style={styles.posgreen}>&nbsp;&nbsp;&nbsp;&nbsp;{twentyfourhourchange} </Text>
+            </Text>
+
+          ) : (
+            <Text style={styles.redPriceNumber} >
+              <AntDesign style={styles.indicatorarrow} name="caretdown" size={24} color="#ff2033" />&nbsp;
+              {twentyfourhourchangepercentage}%{"\n"}
+              <Text style={styles.posred}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{twentyfourhourchange} </Text>
             </Text>)
-          } 
+          }
         </View>
 
-{/* SEVEN DAY PRICE CHANGE */}
+        {/* SEVEN DAY PRICE CHANGE */}
         <View style={styles.datacontainer}>
           <Text style={styles.dataheader}>7-day Change %</Text>
 
           {sevendaychangepriceusd >= 0 ? (
-            
+
             <Text style={styles.greenPriceNumber}>
               <AntDesign style={styles.indicatorarrow} name="caretup" size={24} color="#22a824" />&nbsp;
-             {sevendaychangepercentage}%
-          </Text>
-          ):(
-          <Text style={styles.redPriceNumber} >
-            <AntDesign style={styles.indicatorarrow} name="caretdown" size={24} color="#ff2033" />&nbsp;
-            {sevendaychangepercentage}%
+              {sevendaychangepercentage}%
+            </Text>
+          ) : (
+            <Text style={styles.redPriceNumber} >
+              <AntDesign style={styles.indicatorarrow} name="caretdown" size={24} color="#ff2033" />&nbsp;
+              {sevendaychangepercentage}%
             </Text>)
-          } 
+          }
         </View>
 
         {/* THIRTY DAY PRICE CHANGE */}
@@ -128,15 +129,15 @@ export default function TabTwoScreen() {
           {thirtydaychangepercentage >= 0 ? (
             <Text style={styles.greenPriceNumber}>
               <AntDesign style={styles.indicatorarrow} name="caretup" size={24} color="#22a824" />&nbsp;
-             {thirtydaychangepercentage}%
-          </Text>
-          ):(
-          <Text style={styles.redPriceNumber} >
-            <AntDesign style={styles.indicatorarrow} name="caretdown" size={24} color="#ff2033" />&nbsp;
-            {thirtydaychangepercentage}%
+              {thirtydaychangepercentage}%
+            </Text>
+          ) : (
+            <Text style={styles.redPriceNumber} >
+              <AntDesign style={styles.indicatorarrow} name="caretdown" size={24} color="#ff2033" />&nbsp;
+              {thirtydaychangepercentage}%
             </Text>)
-          } 
-          
+          }
+
         </View>
 
 
@@ -144,26 +145,26 @@ export default function TabTwoScreen() {
         <View style={styles.datacontainer}>
           <Text style={styles.dataheader}>market cap</Text>
           <SairaSB style={styles.priceNumber}>{marketcap}</SairaSB>
-          </View>
+        </View>
 
         <View style={styles.datacontainer}>
           <Text style={styles.dataheader}>Market Cap Rank</Text>
           <SairaSB style={styles.priceNumber}>{marketcaprank}</SairaSB>
-          </View>
+        </View>
 
         <View style={styles.datacontainer}>
           <Text style={styles.dataheader}>block time in minutes</Text>
           <Text style={styles.priceNumber}>{blocktimeinminutes}</Text>
-          </View>
+        </View>
 
         <View style={styles.datacontainer}>
-        <Hyperlink linkDefault={ true }>
-          <Text style={styles.descriptiontext}>{description}</Text></Hyperlink>
-          </View>
+          <Hyperlink linkDefault={true}>
+            <Text style={styles.descriptiontext}>{description}</Text></Hyperlink>
+        </View>
         <UniversalFooter />
       </ScrollView>
     );
-  } 
+  }
 
   const loading = () => {
     getCrypto();

@@ -6,7 +6,7 @@ export default function UniversalFooter() {
     return (
         <View>
             <Text style={styles.footerText}>PesaPulse</Text>
-            <Text style={styles.footerText}>version 1.8.2.1400</Text>
+            <Text style={styles.footerText}>version 1.8.3.1957</Text>
             <Text style={styles.footerText}>Created by Obi Nwokogba</Text>
             <Text style={styles.footerText}>&nbsp;</Text>
         </View>

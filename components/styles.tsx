@@ -12,6 +12,7 @@ export default StyleSheet.create({
         paddingBottom: 10,
         fontFamily:'mplus1regular'
     },
+    
     coinsubdetails: {
         color: '#7b7b7b',
         fontSize: 16,
@@ -25,12 +26,14 @@ export default StyleSheet.create({
         fontFamily:'mplus1regular',
         textAlign:'center'
     },
+
     coinmegalistcontainer:{
         display:'flex',
         alignContent: 'flex-start',
         backgroundColor:'#f0f0f0',
         borderWidth:0
     },
+
     coinmegalistitem: {
         color: '#7b7b7b',
         fontSize: 16,
@@ -47,10 +50,12 @@ export default StyleSheet.create({
         paddingLeft:13,
         borderLeftWidth:6
     },
+
     image: {
         flex: 1,
         justifyContent: "center"
       },
+
     assetlistitem:
     {
         flex: 0.2,
@@ -63,7 +68,7 @@ export default StyleSheet.create({
         paddingTop: 5,
         paddingBottom: 8,
         lineHeight: 30,
-        minHeight:82
+        minHeight:76
     },
 
     datacontainer:{
@@ -75,10 +80,10 @@ export default StyleSheet.create({
         backgroundColor:'#ffffff',
         lineHeight:10
     },
+
     centeredtext:{
         textAlign:'center'
     },
-
 
     listscrollview: {
         paddingTop: 10,
@@ -87,6 +92,7 @@ export default StyleSheet.create({
         flex: 1,
         display: 'flex',
     },
+
     homelistcontainer: {
         display: 'flex',
         alignItems: 'center',
@@ -95,6 +101,7 @@ export default StyleSheet.create({
         backgroundColor: "#f0f0f0",
         flexDirection: 'row'
     },
+
     container: {
         flex: 1,
         alignItems: 'center',
@@ -102,6 +109,7 @@ export default StyleSheet.create({
         textAlign: 'left',
         backgroundColor: "#f0f0f0"
     },
+
     cointrendheader:{
         fontSize: 15,
         fontWeight: "200",
@@ -118,8 +126,8 @@ export default StyleSheet.create({
         fontFamily:'mplus1bold',
         textAlign:'center',
         marginTop:30
-
     },
+
     // SCROLL VIEW containing cryptos
     cryptocontainer: {
         flex:1,
@@ -128,11 +136,13 @@ export default StyleSheet.create({
         backgroundColor: "#f0f0f0",
         height:1200,
     },
+
     symbol: {
         color: '#68C2FF',
         fontSize: 50,
         fontWeight: "700"
     },
+
     symbolheader: {
         color: '#7e7e7e',
         fontSize: 38,
