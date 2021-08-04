@@ -49,7 +49,7 @@ const stocksymbol = "AAPL";
       />
 
       <BottomTab.Screen
-        name="CryptoCurrency"
+        name="CryptoCurrencies"
         component={TabTwoNavigator}
         options={
           {

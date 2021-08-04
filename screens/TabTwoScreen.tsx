@@ -1,20 +1,16 @@
-// Ask about conditionals in render JSX
-
 import * as React from 'react';
 import { useState, useEffect } from "react";
 import styles from "../components/styles";
 import { SairaSB } from '../components/StyledText2';
 import UniversalFooter from '../components/UniversalFooter';
 import { Text, View } from '../components/Themed';
-import { StyleSheet, ImageBackground, ScrollView, TouchableOpacity } from 'react-native';
+import { ScrollView } from 'react-native';
 import Hyperlink from 'react-native-hyperlink';
 import { AntDesign } from '@expo/vector-icons';
-
 
 export default function TabTwoScreen() {
 
   let symbol = global.currentcrypto;
-  let coinname = global.currentcrypto;
   let lastloadedcrypto = "";
 
   // Additional function for formatting numbers

@@ -1,24 +1,22 @@
-// Ask about conditionals in render JSX
-
 import * as React from 'react';
 import { useState, useEffect } from "react";
 import styles from "../components/styles";
-import { SairaSB } from '../components/StyledText2';
 import UniversalFooter from '../components/UniversalFooter';
 import { Text, View } from '../components/Themed';
-import { StyleSheet, ImageBackground, ScrollView, TouchableOpacity } from 'react-native';
-import Hyperlink from 'react-native-hyperlink';
-import { AntDesign } from '@expo/vector-icons';
+import { ScrollView } from 'react-native';
 import obicurrencies from '../assets/obicurrencies.json';
 
-
-
 export default function TabFourScreen() {
-
 
   // Additional function for formatting numbers
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
+  function randominteger(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
   }
 
   const [crypto, setCrypto] = useState(null);
@@ -140,19 +138,14 @@ export default function TabFourScreen() {
 
         <View style={styles.coinmegalistcontainer}>
 
-         <Text>
-            {Object.keys(obicurrencies).map((key) => (
-               <Text style={styles.coinmegalistitem}>
-            {key} &middot; </Text>
+          <Text>
+            {Object.keys(obicurrencies).map((obj, key) => (
+              <Text style={styles.coinmegalistitem} key={randominteger(1000, 100000)}>
+                {obicurrencies[obj]} &middot; </Text>
             ))}
-            </Text>
 
-          
-
+          </Text>
         </View>
-
-
-
         <UniversalFooter />
       </ScrollView>
     );
