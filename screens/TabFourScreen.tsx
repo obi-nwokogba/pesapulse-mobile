@@ -65,70 +65,70 @@ export default function TabFourScreen() {
         <Text style={styles.cointrendheader}>Market Cap Percentage</Text>
 
         <Text style={styles.mktcapheader}>
-          1 &middot; {marketcappercentagekeys[0]}&nbsp;
+        1 &middot; {String(marketcappercentagekeys[0]).toUpperCase()}&nbsp;
           {marketcappercentage.[marketcappercentagekeys[0]].toFixed(3)}%</Text>
         <Text style={styles.coinsubdetails}>
           {obicurrencies[marketcappercentagekeys[0]]}
         </Text>
 
         <Text style={styles.mktcapheader}>
-          2 &middot; {marketcappercentagekeys[1]}&nbsp;
+        2 &middot; {String(marketcappercentagekeys[1]).toUpperCase()}&nbsp;
           {marketcappercentage.[marketcappercentagekeys[1]].toFixed(3)}%</Text>
         <Text style={styles.coinsubdetails}>
           {obicurrencies[marketcappercentagekeys[1]]}
         </Text>
 
         <Text style={styles.mktcapheader}>
-          3 &middot; {marketcappercentagekeys[2]}&nbsp;
+        3 &middot; {String(marketcappercentagekeys[2]).toUpperCase()}&nbsp;
           {marketcappercentage.[marketcappercentagekeys[2]].toFixed(3)}%</Text>
         <Text style={styles.coinsubdetails}>
           {obicurrencies[marketcappercentagekeys[2]]}
         </Text>
 
         <Text style={styles.mktcapheader}>
-          4 &middot; {marketcappercentagekeys[3]}&nbsp;
+        4 &middot; {String(marketcappercentagekeys[3]).toUpperCase()}&nbsp;
           {marketcappercentage.[marketcappercentagekeys[3]].toFixed(3)}%</Text>
         <Text style={styles.coinsubdetails}>
           {obicurrencies[marketcappercentagekeys[3]]}
         </Text>
 
         <Text style={styles.mktcapheader}>
-          5 &middot; {marketcappercentagekeys[4]}&nbsp;
+        5 &middot; {String(marketcappercentagekeys[4]).toUpperCase()}&nbsp;
           {marketcappercentage.[marketcappercentagekeys[4]].toFixed(3)}%</Text>
         <Text style={styles.coinsubdetails}>
           {obicurrencies[marketcappercentagekeys[4]]}
         </Text>
 
         <Text style={styles.mktcapheader}>
-          6 &middot; {marketcappercentagekeys[5]}&nbsp;
+        6 &middot; {String(marketcappercentagekeys[5]).toUpperCase()}&nbsp;
           {marketcappercentage.[marketcappercentagekeys[5]].toFixed(3)}%</Text>
         <Text style={styles.coinsubdetails}>
           {obicurrencies[marketcappercentagekeys[5]]}
         </Text>
 
         <Text style={styles.mktcapheader}>
-          7 &middot; {marketcappercentagekeys[6]}&nbsp;
+          7 &middot; {String(marketcappercentagekeys[6]).toUpperCase()}&nbsp;
           {marketcappercentage.[marketcappercentagekeys[6]].toFixed(3)}%</Text>
         <Text style={styles.coinsubdetails}>
           {obicurrencies[marketcappercentagekeys[6]]}
         </Text>
 
         <Text style={styles.mktcapheader}>
-          8 &middot; {marketcappercentagekeys[7]}&nbsp;
+        8 &middot; {String(marketcappercentagekeys[7]).toUpperCase()}&nbsp;
           {marketcappercentage.[marketcappercentagekeys[7]].toFixed(3)}%</Text>
         <Text style={styles.coinsubdetails}>
           {obicurrencies[marketcappercentagekeys[7]]}
         </Text>
 
         <Text style={styles.mktcapheader}>
-          9 &middot; {marketcappercentagekeys[8]}&nbsp;
+        9 &middot; {String(marketcappercentagekeys[8]).toUpperCase()}&nbsp;
           {marketcappercentage.[marketcappercentagekeys[8]].toFixed(3)}%</Text>
         <Text style={styles.coinsubdetails}>
-          {obicurrencies[marketcappercentagekeys[9]]}
+          {obicurrencies[marketcappercentagekeys[8]]}
         </Text>
 
         <Text style={styles.mktcapheader}>
-          10 &middot; {marketcappercentagekeys[9]}&nbsp;
+        10 &middot; {String(marketcappercentagekeys[9]).toUpperCase()}&nbsp;
           {marketcappercentage.[marketcappercentagekeys[9]].toFixed(3)}%</Text>
         <Text style={styles.coinsubdetails}>
           {obicurrencies[marketcappercentagekeys[9]]}

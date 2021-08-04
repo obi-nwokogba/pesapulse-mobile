@@ -154,7 +154,7 @@ export default StyleSheet.create({
 
     mktcapheader: {
         color: '#636363',
-        fontSize: 32,
+        fontSize: 30,
         fontWeight: "700",
         paddingTop: 5,
         fontFamily:'mplus1bold',

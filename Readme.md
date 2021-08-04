@@ -30,7 +30,7 @@ As CryptoCurrencies become more popular, and asthe number of cryptocurrencies ke
 ## Getting Started
 You can download the .APK file and install this app on your Android phones here:
 
-#### [APK Download Link - 60MB](https://www.mediafire.com/file/gntbvrxuzmkn48p/pesapulse-1-8-3.apk/file)
+#### [APK Download Link - 60MB](https://www.mediafire.com/file/gcy7prdm0hqdwnr/pesapulse-1-8-3-v2.apk/file)
 ##### Current Version: 1.8.3
 ##### APK Size: 60MB
 
