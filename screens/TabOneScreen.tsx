@@ -343,13 +343,6 @@ export default function TabOneScreen({ navigation: { navigate } }) {
           <Text style={styles.listingBigName}>ZCash</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.assetlistitem} onPress={() => {
-          setcurrentcrypto('bitcoin');
-        }}>
-          <Text style={styles.dataheader}>DTX</Text>
-          <Text style={styles.listingBigName}>Danny Texas</Text>
-        </TouchableOpacity>
-
       </ScrollView>
       <ScrollView style={styles.listscrollview}>
 
@@ -454,7 +447,6 @@ export default function TabOneScreen({ navigation: { navigate } }) {
           <Text style={styles.dataheader}>NKE</Text>
           <Text style={styles.listingBigName}>Nike Inc</Text>
         </TouchableOpacity>
-
 
         <TouchableOpacity style={styles.assetlistitem} onPress={() => {
           setcurrentstock('TSLA');
