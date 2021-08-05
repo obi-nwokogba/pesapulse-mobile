@@ -102,10 +102,24 @@ export default function TabOneScreen({ navigation: { navigate } }) {
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.assetlistitem} onPress={() => {
+          setcurrentcrypto('decred');
+        }}>
+          <Text style={styles.dataheader}>DCR</Text>
+          <Text style={styles.listingBigName}>Decred</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.assetlistitem} onPress={() => {
           setcurrentcrypto('dogecoin');
         }}>
           <Text style={styles.dataheader}>DOGE</Text>
           <Text style={styles.listingBigName}>Dogecoin</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.assetlistitem} onPress={() => {
+          setcurrentcrypto('elrond-erd-2');
+        }}>
+          <Text style={styles.dataheader}>EGLD</Text>
+          <Text style={styles.listingBigName}>Elrond</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.assetlistitem} onPress={() => {
@@ -151,6 +165,13 @@ export default function TabOneScreen({ navigation: { navigate } }) {
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.assetlistitem} onPress={() => {
+          setcurrentcrypto('huobi-token');
+        }}>
+          <Text style={styles.dataheader}>HT</Text>
+          <Text style={styles.listingBigName}>Huobi Token</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.assetlistitem} onPress={() => {
           setcurrentcrypto('internet-computer');
         }}>
           <Text style={styles.dataheader}>ICP</Text>
@@ -162,6 +183,13 @@ export default function TabOneScreen({ navigation: { navigate } }) {
         }}>
           <Text style={styles.dataheader}>IOTA</Text>
           <Text style={styles.listingBigName}>IOTA</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.assetlistitem} onPress={() => {
+          setcurrentcrypto('kusama');
+        }}>
+          <Text style={styles.dataheader}>KSM</Text>
+          <Text style={styles.listingBigName}>Kusama</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.assetlistitem} onPress={() => {
@@ -183,6 +211,13 @@ export default function TabOneScreen({ navigation: { navigate } }) {
         }}>
           <Text style={styles.dataheader}>NEO</Text>
           <Text style={styles.listingBigName}>Neo</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.assetlistitem} onPress={() => {
+          setcurrentcrypto('ocean-protocol');
+        }}>
+          <Text style={styles.dataheader}>OCEAN</Text>
+          <Text style={styles.listingBigName}>Ocean Protocol</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.assetlistitem} onPress={() => {
@@ -258,13 +293,18 @@ export default function TabOneScreen({ navigation: { navigate } }) {
           <Text style={styles.listingBigName}>The Graph</Text>
         </TouchableOpacity>
 
-
-
         <TouchableOpacity style={styles.assetlistitem} onPress={() => {
           setcurrentcrypto('theta');
         }}>
           <Text style={styles.dataheader}>THETA</Text>
           <Text style={styles.listingBigName}>Theta</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.assetlistitem} onPress={() => {
+          setcurrentcrypto('thorchain');
+        }}>
+          <Text style={styles.dataheader}>RUNE</Text>
+          <Text style={styles.listingBigName}>THORChain</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.assetlistitem} onPress={() => {
@@ -296,13 +336,18 @@ export default function TabOneScreen({ navigation: { navigate } }) {
           <Text style={styles.listingBigName}>Wrapped Bitcoin</Text>
         </TouchableOpacity>
 
-
-
         <TouchableOpacity style={styles.assetlistitem} onPress={() => {
           setcurrentcrypto('zcash');
         }}>
           <Text style={styles.dataheader}>ZEC</Text>
           <Text style={styles.listingBigName}>ZCash</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.assetlistitem} onPress={() => {
+          setcurrentcrypto('bitcoin');
+        }}>
+          <Text style={styles.dataheader}>DTX</Text>
+          <Text style={styles.listingBigName}>Danny Texas</Text>
         </TouchableOpacity>
 
       </ScrollView>
